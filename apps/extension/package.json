@@ -1,15 +1,16 @@
 {
   "name": "extension",
-  "displayName": "LMS Glowup",
+  "displayName": "Extension Template",
   "version": "0.0.1",
-  "description": "A Chrome extension for LMS Glowup",
+  "description": "A Chrome extension template",
   "scripts": {
     "dev": "plasmo dev",
     "build": "plasmo build",
     "package": "plasmo package"
   },
   "dependencies": {
-    "@lms-glowup/shared": "workspace:*",
+    "@extension-template/shared": "workspace:*",
+    "@supabase/supabase-js": "^2.99.2",
     "plasmo": "latest",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
@@ -28,6 +29,12 @@
     "permissions": [
       "storage",
       "activeTab"
-    ]
+    ],
+    "externally_connectable": {
+      "matches": [
+        "http://localhost:3000/*",
+        "https://*.vercel.app/*"
+      ]
+    }
   }
 }

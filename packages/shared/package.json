@@ -1,5 +1,5 @@
 {
-  "name": "@lms-glowup/shared",
+  "name": "@extension-template/shared",
   "version": "0.0.1",
   "private": true,
   "main": "./src/index.ts",

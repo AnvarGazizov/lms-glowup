@@ -1,5 +1,5 @@
 {
-  "name": "lms-glowup",
+  "name": "extension-template",
   "private": true,
   "scripts": {
     "dev": "turbo dev",
