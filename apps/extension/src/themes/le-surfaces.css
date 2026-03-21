@@ -1,0 +1,71 @@
+/* Learning Environment layouts (calendar, two-column tool pages) — uses each theme’s :root tokens. */
+
+/* LE chrome + Portfolio: footer and nav strip default to light gray / white */
+[data-lms-glowup-themed] footer.d2l-footer.d2l-footer-background-color,
+[data-lms-glowup-themed] .d2l-footer.d2l-footer-background-color {
+  background-color: transparent !important;
+  background: transparent !important;
+}
+
+[data-lms-glowup-themed]
+  d2l-labs-navigation-main-footer.d2l-branding-navigation-background-color {
+  background-color: transparent !important;
+  background: transparent !important;
+}
+
+[data-lms-glowup-themed] .d2l-navigation-s-mobile-menu-content,
+[data-lms-glowup-themed]
+  .d2l-navigation-s-mobile-menu-color-strip.d2l-branding-navigation-background-color {
+  background-color: transparent !important;
+  background: transparent !important;
+}
+
+[data-lms-glowup-themed] .d2l-column-side-bg,
+[data-lms-glowup-themed] .d2l-column-flip-side {
+  background-color: color-mix(
+    in srgb,
+    var(--d2l-color-sylvite, #2a2a2a) 78%,
+    transparent
+  ) !important;
+  color: var(--d2l-color-ferrite, inherit) !important;
+}
+
+[data-lms-glowup-themed] .d2l-column-side-padding {
+  color: var(--d2l-color-ferrite, inherit);
+}
+
+/* Month view: weekend / spillover cells default to near-white */
+[data-lms-glowup-themed] table.d2l-le-calendar-month td.d2l-le-calendar-weekend,
+[data-lms-glowup-themed] table.d2l-le-calendar-month td.d2l-le-calendar-month-other {
+  background-color: color-mix(
+    in srgb,
+    var(--d2l-color-mica, #1a1a1a) 55%,
+    transparent
+  ) !important;
+  color: var(--d2l-color-ferrite, inherit) !important;
+}
+
+[data-lms-glowup-themed] table.d2l-le-calendar-month td.d2l-le-calendar-today {
+  background-color: color-mix(
+    in srgb,
+    var(--d2l-color-celestine, #0f6cbf) 24%,
+    var(--d2l-color-mica, #222)
+  ) !important;
+  color: var(--d2l-color-ferrite, inherit) !important;
+}
+
+[data-lms-glowup-themed] .d2l-le-calendar-sep {
+  background-color: color-mix(
+    in srgb,
+    var(--d2l-color-tungsten, #888) 22%,
+    transparent
+  ) !important;
+}
+
+[data-lms-glowup-themed] table.d2l-le-calendar-month th {
+  color: var(--d2l-color-ferrite, inherit);
+}
+
+[data-lms-glowup-themed] table.d2l-le-calendar-month td {
+  color: var(--d2l-color-ferrite, inherit);
+}

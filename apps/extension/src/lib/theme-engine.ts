@@ -1,8 +1,11 @@
+import { setCalendarShadowFixActive } from "./calendar-shadow-fix"
 import { setEnrollmentCardTextFixActive } from "./enrollment-card-fix"
+import { setPortfolioShadowFixActive } from "./portfolio-shadow-fix"
 import type { ThemePreferences } from "./storage"
 import { applySidebarNav } from "./sidebar-nav"
 
 import baseCSS from "data-text:../themes/base.css"
+import leSurfacesCSS from "data-text:../themes/le-surfaces.css"
 import mapleLeafsCSS from "data-text:../themes/maple-leafs.css"
 import raptorsCSS from "data-text:../themes/raptors.css"
 import camoCSS from "data-text:../themes/camo.css"
@@ -21,9 +24,11 @@ export function buildCSS(prefs: ThemePreferences): string {
   const parts: string[] = [baseCSS]
 
   if (prefs.activeTheme === "custom") {
+    parts.push(leSurfacesCSS)
     parts.push(prefs.customCSS)
   } else if (THEME_MAP[prefs.activeTheme]) {
     parts.push(THEME_MAP[prefs.activeTheme])
+    parts.push(leSurfacesCSS)
   }
 
   return parts.join("\n")
@@ -42,7 +47,10 @@ export function applyTheme(
   const css = buildCSS(prefs)
   injectCSS(css)
   applyFeatureAttrs(prefs)
-  setEnrollmentCardTextFixActive(prefs.activeTheme !== "none")
+  const themed = prefs.activeTheme !== "none"
+  setEnrollmentCardTextFixActive(themed)
+  setCalendarShadowFixActive(themed)
+  setPortfolioShadowFixActive(themed)
   applySidebarNav(isLoggedIn && prefs.enabledFeatures.sidebarNav)
 }
 
@@ -80,6 +88,8 @@ function applyFeatureAttrs(prefs: ThemePreferences): void {
 export function removeTheme(): void {
   document.getElementById(STYLE_ID)?.remove()
   setEnrollmentCardTextFixActive(false)
+  setCalendarShadowFixActive(false)
+  setPortfolioShadowFixActive(false)
   applySidebarNav(false)
   const root = document.documentElement
   root.removeAttribute("data-lms-glowup-themed")

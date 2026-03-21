@@ -81,6 +81,39 @@ function isActivePath(href: string): boolean {
   }
 }
 
+let sidebarActiveSyncCleanup: (() => void) | null = null
+
+function syncSidebarActiveItems(): void {
+  const sidebar = document.getElementById(SIDEBAR_ID)
+  if (!sidebar) return
+  for (const item of sidebar.querySelectorAll<HTMLElement>(".glowup-sidebar-item")) {
+    item.classList.remove("active")
+    if (
+      item instanceof HTMLAnchorElement &&
+      item.href &&
+      !item.href.startsWith("javascript:")
+    ) {
+      if (isActivePath(item.href)) item.classList.add("active")
+    }
+  }
+}
+
+function attachSidebarActiveSync(): void {
+  sidebarActiveSyncCleanup?.()
+  const sync = () => syncSidebarActiveItems()
+  window.addEventListener("popstate", sync)
+  window.addEventListener("hashchange", sync)
+  sidebarActiveSyncCleanup = () => {
+    window.removeEventListener("popstate", sync)
+    window.removeEventListener("hashchange", sync)
+  }
+}
+
+function detachSidebarActiveSync(): void {
+  sidebarActiveSyncCleanup?.()
+  sidebarActiveSyncCleanup = null
+}
+
 // ── Sidebar DOM construction ────────────────────────────────
 
 function buildSidebar(navLinks: NavLink[], userEls: HTMLElement[]): HTMLElement {
@@ -93,7 +126,6 @@ function buildSidebar(navLinks: NavLink[], userEls: HTMLElement[]): HTMLElement 
   for (const link of navLinks) {
     const a = document.createElement("a")
     a.className = "glowup-sidebar-item"
-    if (isActivePath(link.href)) a.classList.add("active")
     a.href = link.href
 
     const iconSpan = document.createElement("span")
@@ -284,6 +316,7 @@ export function applySidebarNav(enabled: boolean): void {
   const root = document.documentElement
 
   if (!enabled) {
+    detachSidebarActiveSync()
     document.getElementById(SIDEBAR_ID)?.remove()
     removeStyles()
     unwrapPageContent()
@@ -294,7 +327,11 @@ export function applySidebarNav(enabled: boolean): void {
   root.setAttribute(DATA_ATTR, "")
   injectStyles()
 
-  if (document.getElementById(SIDEBAR_ID)) return
+  if (document.getElementById(SIDEBAR_ID)) {
+    syncSidebarActiveItems()
+    attachSidebarActiveSync()
+    return
+  }
 
   const mount = () => {
     onNavReady(() => {
@@ -302,6 +339,8 @@ export function applySidebarNav(enabled: boolean): void {
       const navLinks = deduplicateNavItems(collectNavLinks(), userEls)
       if (navLinks.length > 0 || userEls.length > 0) {
         wrapPageContent(buildSidebar(navLinks, userEls))
+        syncSidebarActiveItems()
+        attachSidebarActiveSync()
       }
     })
   }
