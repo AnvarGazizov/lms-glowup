@@ -1,3 +1,4 @@
+import { setEnrollmentCardTextFixActive } from "./enrollment-card-fix"
 import type { ThemePreferences } from "./storage"
 import { applySidebarNav } from "./sidebar-nav"
 
@@ -17,11 +18,7 @@ const THEME_MAP: Record<string, string> = {
 }
 
 export function buildCSS(prefs: ThemePreferences): string {
-  const parts: string[] = []
-
-  if (prefs.activeTheme !== "none") {
-    parts.push(baseCSS)
-  }
+  const parts: string[] = [baseCSS]
 
   if (prefs.activeTheme === "custom") {
     parts.push(prefs.customCSS)
@@ -45,6 +42,7 @@ export function applyTheme(
   const css = buildCSS(prefs)
   injectCSS(css)
   applyFeatureAttrs(prefs)
+  setEnrollmentCardTextFixActive(prefs.activeTheme !== "none")
   applySidebarNav(isLoggedIn && prefs.enabledFeatures.sidebarNav)
 }
 
@@ -81,6 +79,7 @@ function applyFeatureAttrs(prefs: ThemePreferences): void {
 
 export function removeTheme(): void {
   document.getElementById(STYLE_ID)?.remove()
+  setEnrollmentCardTextFixActive(false)
   applySidebarNav(false)
   const root = document.documentElement
   root.removeAttribute("data-lms-glowup-themed")

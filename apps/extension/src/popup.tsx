@@ -4,6 +4,8 @@ import { APP_NAME } from "@lms-glowup/shared"
 import { supabase } from "~lib/supabase"
 import { WEB_APP_LOGIN_REDIRECT_URL } from "~lib/web-app-url"
 
+import iconUrl from "data-url:../assets/icon.png"
+
 function IndexPopup() {
   const [user, setUser] = useState<User | null>(null)
   const [loading, setLoading] = useState(true)
@@ -44,10 +46,20 @@ function IndexPopup() {
   if (!user) {
     return (
       <div style={styles.container}>
+        <img
+          src={iconUrl}
+          alt="LMS GlowUp"
+          width={64}
+          height={64}
+          style={styles.icon}
+          decoding="async"
+        />
         <h2 style={styles.title}>{APP_NAME}</h2>
-        <p style={styles.muted}>Sign in to get started</p>
+        <p style={styles.muted}>
+          Sign in to sync your account and unlock the full experience.
+        </p>
         <button onClick={login} style={styles.button}>
-          Sign In
+          Sign in
         </button>
       </div>
     )
@@ -55,6 +67,14 @@ function IndexPopup() {
 
   return (
     <div style={styles.container}>
+      <img
+        src={iconUrl}
+        alt="LMS GlowUp"
+        width={64}
+        height={64}
+        style={styles.icon}
+        decoding="async"
+      />
       <h2 style={styles.title}>{APP_NAME}</h2>
       <p style={styles.muted}>
         Signed in as <strong style={styles.email}>{user.email}</strong>
@@ -72,15 +92,23 @@ const styles: Record<string, React.CSSProperties> = {
     minWidth: 300,
     fontFamily: "system-ui, -apple-system, sans-serif",
   },
+  icon: {
+    display: "block",
+    margin: "0 auto 12px",
+    borderRadius: 16,
+    boxShadow: "0 1px 4px rgba(0, 0, 0, 0.12)",
+  },
   title: {
     margin: "0 0 4px 0",
     fontSize: 18,
     fontWeight: 600,
+    textAlign: "center",
   },
   muted: {
     margin: "0 0 16px 0",
     fontSize: 13,
     color: "#71717a",
+    textAlign: "center",
   },
   email: {
     color: "#18181b",

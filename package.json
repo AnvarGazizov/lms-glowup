@@ -23,6 +23,7 @@
     ]
   },
   "devDependencies": {
+    "@parcel/optimizer-data-url": "2.9.3",
     "turbo": "^2.8.17"
   }
 }

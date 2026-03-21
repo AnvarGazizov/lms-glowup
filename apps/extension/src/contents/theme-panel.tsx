@@ -3,6 +3,7 @@ import type { User } from "@supabase/supabase-js"
 import type { PlasmoCSConfig, PlasmoGetStyle } from "plasmo"
 
 import styleText from "data-text:./theme-panel.css"
+import iconUrl from "data-url:../../assets/icon.png"
 import { getPrefs, setPrefs, onPrefsChanged } from "~lib/storage"
 import type { ThemePreferences } from "~lib/storage"
 import { supabase } from "~lib/supabase"
@@ -112,11 +113,24 @@ function ThemePanel() {
   return (
     <>
       <button
+        type="button"
         className="glowup-fab"
         onClick={() => setOpen(!open)}
-        title="LMS Glowup Settings"
+        title={open ? "Close settings" : "LMS Glowup settings"}
+        aria-label={open ? "Close LMS Glowup settings" : "Open LMS Glowup settings"}
       >
-        {open ? "\u2715" : "\u2728"}
+        {open ? (
+          <span className="glowup-fab-close" aria-hidden>
+            {"\u2715"}
+          </span>
+        ) : (
+          <img
+            className="glowup-fab-icon"
+            src={iconUrl}
+            alt=""
+            decoding="async"
+          />
+        )}
       </button>
 
       {open && (
@@ -166,15 +180,20 @@ function ThemePanel() {
               </div>
             ) : (
               <div className="glowup-sidebar-gate">
+                <p className="glowup-sidebar-gate-lead">
+                  Unlock sidebar navigation
+                </p>
                 <p className="glowup-sidebar-gate-text">
-                  Log in to use the sidebar functionality.
+                  Sign in with your LMS GlowUp account to turn on the Brightspace
+                  sidebar layout. Everything else in this panel works without
+                  signing in.
                 </p>
                 <button
                   type="button"
                   className="glowup-signin-btn"
                   onClick={openSignIn}
                 >
-                  Sign in
+                  Sign in to continue
                 </button>
               </div>
             )}
