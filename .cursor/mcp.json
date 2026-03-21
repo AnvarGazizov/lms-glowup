@@ -2,7 +2,12 @@
   "mcpServers": {
     "chrome-devtools": {
       "command": "npx",
-      "args": ["-y", "chrome-devtools-mcp@latest"]
+      "args": [
+        "-y",
+        "chrome-devtools-mcp@latest",
+        "--ignore-default-chrome-arg=--disable-extensions",
+        "--chrome-arg=--load-extension=${workspaceFolder}${/}apps${/}extension${/}build${/}chrome-mv3-dev"
+      ]
     }
   }
 }
