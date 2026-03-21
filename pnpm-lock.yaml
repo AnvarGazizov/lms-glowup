@@ -14,7 +14,7 @@ importers:
 
   apps/extension:
     dependencies:
-      '@extension-template/shared':
+      '@lms-glowup/shared':
         specifier: workspace:*
         version: link:../../packages/shared
       '@supabase/supabase-js':
@@ -48,7 +48,7 @@ importers:
 
   apps/web:
     dependencies:
-      '@extension-template/shared':
+      '@lms-glowup/shared':
         specifier: workspace:*
         version: link:../../packages/shared
       '@supabase/ssr':

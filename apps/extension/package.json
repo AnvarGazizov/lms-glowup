@@ -1,15 +1,15 @@
 {
   "name": "extension",
-  "displayName": "Extension Template",
+  "displayName": "LMS Glowup",
   "version": "0.0.1",
-  "description": "A Chrome extension template",
+  "description": "A Chrome extension and web app powered by Supabase",
   "scripts": {
     "dev": "plasmo dev",
     "build": "plasmo build",
     "package": "plasmo package"
   },
   "dependencies": {
-    "@extension-template/shared": "workspace:*",
+    "@lms-glowup/shared": "workspace:*",
     "@supabase/supabase-js": "^2.99.2",
     "plasmo": "latest",
     "react": "^19.0.0",

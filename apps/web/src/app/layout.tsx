@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { APP_NAME, APP_DESCRIPTION } from "@lms-glowup/shared";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -13,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Extension Template",
-  description: "Chrome extension and web app powered by Supabase",
+  title: APP_NAME,
+  description: APP_DESCRIPTION,
 };
 
 export default function RootLayout({

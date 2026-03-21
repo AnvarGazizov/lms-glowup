@@ -9,7 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "@extension-template/shared": "workspace:*",
+    "@lms-glowup/shared": "workspace:*",
     "@supabase/ssr": "latest",
     "@supabase/supabase-js": "latest",
     "next": "16.1.6",

@@ -1,5 +1,6 @@
 import { createClient } from "@/lib/supabase/server"
 import { redirect } from "next/navigation"
+import { APP_NAME } from "@lms-glowup/shared"
 import { ExtensionSync } from "@/components/extension-sync"
 
 export default async function Home() {
@@ -19,7 +20,7 @@ export default async function Home() {
     <div className="flex min-h-screen items-center justify-center bg-zinc-50 dark:bg-zinc-950">
       <div className="w-full max-w-md space-y-6 rounded-xl border border-zinc-200 bg-white p-8 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
         <h1 className="text-2xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">
-          Extension Template
+          {APP_NAME}
         </h1>
 
         {user ? (

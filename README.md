@@ -1,4 +1,4 @@
-# Extension Template
+# LMS Glowup
 
 A Chrome extension and API monorepo built with **Plasmo**, **Next.js**, and **Supabase**.
 

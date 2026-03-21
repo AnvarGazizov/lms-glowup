@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import type { User } from "@supabase/supabase-js"
+import { APP_NAME } from "@lms-glowup/shared"
 import { supabase } from "~lib/supabase"
 
 const WEB_APP_URL = "http://localhost:3000"
@@ -44,7 +45,7 @@ function IndexPopup() {
   if (!user) {
     return (
       <div style={styles.container}>
-        <h2 style={styles.title}>Extension Template</h2>
+        <h2 style={styles.title}>{APP_NAME}</h2>
         <p style={styles.muted}>Sign in to get started</p>
         <button onClick={login} style={styles.button}>
           Sign In
@@ -55,7 +56,7 @@ function IndexPopup() {
 
   return (
     <div style={styles.container}>
-      <h2 style={styles.title}>Extension Template</h2>
+      <h2 style={styles.title}>{APP_NAME}</h2>
       <p style={styles.muted}>
         Signed in as <strong style={styles.email}>{user.email}</strong>
       </p>
