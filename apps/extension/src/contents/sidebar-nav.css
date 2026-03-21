@@ -23,7 +23,7 @@
 #lms-glowup-content {
   flex: 1;
   min-width: 0;
-  height: 100%;
+  overflow-x: hidden;
 }
 
 #lms-glowup-sidebar .glowup-sidebar-section {

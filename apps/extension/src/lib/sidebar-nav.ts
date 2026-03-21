@@ -145,6 +145,61 @@ function appendDivider(parent: HTMLElement) {
 
 // ── Page layout wrapping ────────────────────────────────────
 
+const SKIP_WRAP_TAGS = new Set([
+  "SCRIPT",
+  "STYLE",
+  "LINK",
+  "META",
+  "NOSCRIPT",
+])
+
+let bodyObserver: MutationObserver | null = null
+
+function shouldSkipNode(node: Node): boolean {
+  if (!(node instanceof HTMLElement)) return node.nodeType !== Node.ELEMENT_NODE
+  return (
+    SKIP_WRAP_TAGS.has(node.tagName) ||
+    node.id === SIDEBAR_STYLE_ID ||
+    node.id === SIDEBAR_ID ||
+    node.id === LAYOUT_WRAPPER_ID ||
+    node.id === "lms-glowup-theme"
+  )
+}
+
+function sweepBodyChildren(content: HTMLElement): void {
+  const children = Array.from(document.body.childNodes)
+  for (const child of children) {
+    if (shouldSkipNode(child)) continue
+    if (child instanceof HTMLElement && child.id === LAYOUT_WRAPPER_ID) continue
+    content.appendChild(child)
+  }
+}
+
+function watchBodyForStrayNodes(): void {
+  stopWatchingBody()
+  const content = document.getElementById(CONTENT_WRAPPER_ID)
+  if (!content) return
+
+  bodyObserver = new MutationObserver((mutations) => {
+    for (const m of mutations) {
+      for (const node of Array.from(m.addedNodes)) {
+        if (node.parentNode !== document.body) continue
+        if (shouldSkipNode(node)) continue
+        if (node instanceof HTMLElement && node.id === LAYOUT_WRAPPER_ID)
+          continue
+        content.appendChild(node)
+      }
+    }
+  })
+
+  bodyObserver.observe(document.body, { childList: true })
+}
+
+function stopWatchingBody(): void {
+  bodyObserver?.disconnect()
+  bodyObserver = null
+}
+
 function wrapPageContent(sidebar: HTMLElement): void {
   const layout = document.createElement("div")
   layout.id = LAYOUT_WRAPPER_ID
@@ -152,18 +207,18 @@ function wrapPageContent(sidebar: HTMLElement): void {
   const content = document.createElement("div")
   content.id = CONTENT_WRAPPER_ID
 
-  const mainWrapper = document.querySelector(".d2l-body-main-wrapper")
-  const footer = document.querySelector("footer.d2l-footer")
-
-  if (mainWrapper) content.appendChild(mainWrapper)
-  if (footer) content.appendChild(footer)
+  sweepBodyChildren(content)
 
   layout.appendChild(sidebar)
   layout.appendChild(content)
   document.body.prepend(layout)
+
+  watchBodyForStrayNodes()
 }
 
 function unwrapPageContent(): void {
+  stopWatchingBody()
+
   const layout = document.getElementById(LAYOUT_WRAPPER_ID)
   if (!layout) return
 
@@ -199,16 +254,28 @@ function onNavReady(cb: () => void): void {
     return
   }
 
+  let settled = false
+  const settle = () => {
+    if (settled) return
+    settled = true
+    cb()
+  }
+
   const observer = new MutationObserver((_mutations, obs) => {
     if (hasBrightspaceNav()) {
       obs.disconnect()
-      cb()
+      settle()
     }
   })
   observer.observe(document.documentElement, {
     childList: true,
     subtree: true,
   })
+
+  setTimeout(() => {
+    observer.disconnect()
+    settle()
+  }, 3000)
 }
 
 // ── Public API ──────────────────────────────────────────────
