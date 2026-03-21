@@ -2,8 +2,7 @@ import { useEffect, useState } from "react"
 import type { User } from "@supabase/supabase-js"
 import { APP_NAME } from "@lms-glowup/shared"
 import { supabase } from "~lib/supabase"
-
-const WEB_APP_URL = "http://localhost:3000"
+import { WEB_APP_LOGIN_REDIRECT_URL } from "~lib/web-app-url"
 
 function IndexPopup() {
   const [user, setUser] = useState<User | null>(null)
@@ -26,7 +25,7 @@ function IndexPopup() {
   }, [])
 
   const login = () => {
-    chrome.tabs.create({ url: `${WEB_APP_URL}/login?redirect=extension` })
+    chrome.tabs.create({ url: WEB_APP_LOGIN_REDIRECT_URL })
   }
 
   const logout = async () => {

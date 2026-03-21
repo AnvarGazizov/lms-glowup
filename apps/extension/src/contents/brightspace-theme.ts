@@ -1,7 +1,8 @@
 import type { PlasmoCSConfig } from "plasmo"
 
-import { getPrefs, onPrefsChanged } from "~lib/storage"
 import { applyTheme } from "~lib/theme-engine"
+import { getPrefs, onPrefsChanged } from "~lib/storage"
+import { supabase } from "~lib/supabase"
 
 export const config: PlasmoCSConfig = {
   matches: ["https://*.brightspacedemo.com/*", "https://*.brightspace.com/*"],
@@ -10,10 +11,17 @@ export const config: PlasmoCSConfig = {
 
 async function init() {
   const prefs = await getPrefs()
-  applyTheme(prefs)
+  const { data: { session } } = await supabase.auth.getSession()
+  applyTheme(prefs, !!session)
 
   onPrefsChanged((updated) => {
-    applyTheme(updated)
+    void supabase.auth.getSession().then(({ data: { session: s } }) => {
+      applyTheme(updated, !!s)
+    })
+  })
+
+  supabase.auth.onAuthStateChange((_event, session) => {
+    void getPrefs().then((p) => applyTheme(p, !!session))
   })
 }
 

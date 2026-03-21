@@ -38,11 +38,14 @@ function getFeatureAttrs(prefs: ThemePreferences) {
   }
 }
 
-export function applyTheme(prefs: ThemePreferences): void {
+export function applyTheme(
+  prefs: ThemePreferences,
+  isLoggedIn: boolean
+): void {
   const css = buildCSS(prefs)
   injectCSS(css)
   applyFeatureAttrs(prefs)
-  applySidebarNav(prefs.enabledFeatures.sidebarNav)
+  applySidebarNav(isLoggedIn && prefs.enabledFeatures.sidebarNav)
 }
 
 export function injectCSS(css: string): void {

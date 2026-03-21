@@ -42,7 +42,7 @@ d2l-card,
 .d2l-enrollment-card {
   background-color: rgba(59, 74, 47, 0.9) !important;
   border-color: #4a5e38 !important;
-  color: #f5f0e0 !important;
+  color: #1a1a1a !important;
   backdrop-filter: blur(2px) !important;
 }
 
