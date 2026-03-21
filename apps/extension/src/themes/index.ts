@@ -25,6 +25,10 @@ export const THEMES: ThemeDefinition[] = [
     name: "Retro"
   },
   {
+    id: "neubrutal",
+    name: "Neubrutal"
+  },
+  {
     id: "custom",
     name: "Custom CSS"
   }

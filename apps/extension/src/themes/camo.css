@@ -35,13 +35,14 @@ body {
 
 .d2l-branding-navigation-band {
   background-color: rgba(30, 43, 21, 0.95) !important;
+  border-bottom: 2px solid #6b7a30 !important;
 }
 
 .d2l-card,
 d2l-card,
 .d2l-enrollment-card {
   background-color: rgba(59, 74, 47, 0.9) !important;
-  border-color: #4a5e38 !important;
+  border: 1px solid #6b7a30 !important;
   color: #1a1a1a !important;
   backdrop-filter: blur(2px) !important;
 }
@@ -49,7 +50,7 @@ d2l-card,
 .d2l-widget,
 .d2l-homepage-widget {
   background-color: rgba(59, 74, 47, 0.9) !important;
-  border-color: #4a5e38 !important;
+  border: 1px solid #6b7a30 !important;
   color: #f5f0e0 !important;
   backdrop-filter: blur(2px) !important;
 }
@@ -82,7 +83,7 @@ a:hover,
 d2l-button {
   background-color: rgba(74, 94, 56, 0.95) !important;
   color: #f5f0e0 !important;
-  border-color: #6b7a30 !important;
+  border: 2px solid #c9b458 !important;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4) !important;
 }
 
@@ -91,12 +92,14 @@ table,
 .d2l-datalist {
   background-color: rgba(59, 74, 47, 0.9) !important;
   color: #f5f0e0 !important;
+  border: 1px solid #6b7a30 !important;
 }
 
 th,
 .d2l-table-header {
   background-color: rgba(46, 61, 34, 0.95) !important;
   color: #f5f0e0 !important;
+  border-bottom: 1px solid #6b7a30 !important;
 }
 
 tr:nth-child(even) {
@@ -106,7 +109,7 @@ tr:nth-child(even) {
 .d2l-dropdown-content,
 d2l-dropdown-menu {
   background-color: rgba(59, 74, 47, 0.95) !important;
-  border-color: #4a5e38 !important;
+  border: 1px solid #6b7a30 !important;
   backdrop-filter: blur(4px) !important;
 }
 
@@ -116,12 +119,21 @@ select,
 .d2l-input {
   background-color: rgba(46, 61, 34, 0.95) !important;
   color: #f5f0e0 !important;
-  border-color: #6b7a30 !important;
+  border: 1px solid #6b7a30 !important;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: #c9b458 !important;
+  outline: none !important;
+  box-shadow: 0 0 0 2px rgba(201, 180, 88, 0.35) !important;
 }
 
 .d2l-minibar,
 .d2l-minibar-container {
   background-color: rgba(30, 43, 21, 0.95) !important;
+  border-bottom: 1px solid #6b7a30 !important;
 }
 
 #lms-glowup-sidebar {

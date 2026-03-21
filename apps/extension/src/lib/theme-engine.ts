@@ -11,6 +11,7 @@ import basketballCSS from "data-text:../themes/basketball.css"
 import camoCSS from "data-text:../themes/camo.css"
 import vaporwaveCSS from "data-text:../themes/vaporwave.css"
 import retroCSS from "data-text:../themes/retro.css"
+import neubrutalCSS from "data-text:../themes/neubrutal.css"
 
 const STYLE_ID = "lms-glowup-theme"
 
@@ -18,7 +19,8 @@ const THEME_MAP: Record<string, string> = {
   basketball: basketballCSS,
   camo: camoCSS,
   vaporwave: vaporwaveCSS,
-  retro: retroCSS
+  retro: retroCSS,
+  neubrutal: neubrutalCSS
 }
 
 export function buildCSS(prefs: ThemePreferences): string {

@@ -1,0 +1,194 @@
+/* Neubrutal — 2023–2025 neubrutalism: flat planes, thick black strokes,
+   hard offset shadows (no blur), lime + emerald highlights. */
+
+:root {
+  --glowup-neu-ink: #0a0a0a;
+  --glowup-neu-paper: #f6f6f6;
+  --glowup-neu-card: #ffffff;
+  --glowup-neu-lime: #d4ff4a;
+  --glowup-neu-lime-soft: #e8ffc4;
+  --glowup-neu-green: #16a34a;
+  --glowup-neu-green-deep: #14532d;
+  --d2l-color-ferrite: #0a0a0a !important;
+  --d2l-color-tungsten: #404040 !important;
+  --d2l-color-mica: #ffffff !important;
+  --d2l-color-sylvite: #f0f0f0 !important;
+  --d2l-color-gypsum: #fafafa !important;
+  --d2l-color-regolith: #f6f6f6 !important;
+  --d2l-color-celestine: #16a34a !important;
+  --d2l-color-celestine-minus-1: #15803d !important;
+}
+
+body {
+  background-color: var(--glowup-neu-paper) !important;
+  color: var(--glowup-neu-ink) !important;
+}
+
+/* Extra green callouts on common content chrome */
+.d2l-heading,
+.d2l-heading-1,
+.d2l-heading-2,
+h1.d2l-heading {
+  color: var(--glowup-neu-green-deep) !important;
+}
+
+.d2l-page-main,
+.d2l-body {
+  background-color: transparent !important;
+  color: var(--glowup-neu-ink) !important;
+}
+
+.d2l-navigation,
+.d2l-navigation-s {
+  background-color: var(--glowup-neu-lime-soft) !important;
+  border-bottom: 3px solid var(--glowup-neu-ink) !important;
+  box-shadow: 0 6px 0 var(--glowup-neu-green) !important;
+}
+
+.d2l-branding-navigation-band {
+  background-color: var(--glowup-neu-lime) !important;
+  height: 6px !important;
+  border-bottom: 2px solid var(--glowup-neu-ink) !important;
+}
+
+.d2l-card,
+d2l-card,
+.d2l-enrollment-card {
+  background-color: var(--glowup-neu-card) !important;
+  border: 2px solid var(--glowup-neu-ink) !important;
+  color: var(--glowup-neu-ink) !important;
+  box-shadow: 6px 6px 0 var(--glowup-neu-ink) !important;
+  border-radius: 2px !important;
+}
+
+.d2l-card:hover,
+d2l-card:hover {
+  box-shadow: 8px 8px 0 var(--glowup-neu-green) !important;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .d2l-card:hover,
+  d2l-card:hover {
+    transform: translate(-1px, -1px);
+  }
+
+  .d2l-button:hover,
+  d2l-button:hover {
+    transform: translate(2px, 2px);
+  }
+}
+
+.d2l-widget,
+.d2l-homepage-widget {
+  background-color: var(--glowup-neu-card) !important;
+  border: 2px solid var(--glowup-neu-ink) !important;
+  color: var(--glowup-neu-ink) !important;
+  box-shadow: 5px 5px 0 var(--glowup-neu-green) !important;
+  border-radius: 2px !important;
+}
+
+.d2l-widget-header,
+.d2l-widget .d2l-heading {
+  color: var(--glowup-neu-green-deep) !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.02em !important;
+}
+
+a,
+.d2l-link,
+.d2l-textblock a {
+  color: var(--glowup-neu-green-deep) !important;
+  font-weight: 700 !important;
+  text-decoration-thickness: 2px !important;
+  text-underline-offset: 3px !important;
+}
+
+a:hover,
+.d2l-link:hover {
+  color: var(--glowup-neu-green) !important;
+}
+
+.d2l-button,
+d2l-button {
+  background-color: var(--glowup-neu-lime) !important;
+  color: var(--glowup-neu-ink) !important;
+  border: 2px solid var(--glowup-neu-ink) !important;
+  box-shadow: 4px 4px 0 var(--glowup-neu-ink) !important;
+  font-weight: 800 !important;
+  border-radius: 2px !important;
+}
+
+.d2l-button:hover,
+d2l-button:hover {
+  background-color: var(--glowup-neu-lime-soft) !important;
+  box-shadow: 2px 2px 0 var(--glowup-neu-ink) !important;
+}
+
+table,
+.d2l-table,
+.d2l-datalist {
+  background-color: var(--glowup-neu-card) !important;
+  color: var(--glowup-neu-ink) !important;
+  border: 2px solid var(--glowup-neu-ink) !important;
+}
+
+th,
+.d2l-table-header {
+  background-color: var(--glowup-neu-lime) !important;
+  color: var(--glowup-neu-ink) !important;
+  border-bottom: 2px solid var(--glowup-neu-ink) !important;
+  font-weight: 800 !important;
+}
+
+tr:nth-child(even) {
+  background-color: rgba(22, 163, 74, 0.12) !important;
+}
+
+.d2l-dropdown-content,
+d2l-dropdown-menu {
+  background-color: var(--glowup-neu-lime-soft) !important;
+  border: 2px solid var(--glowup-neu-ink) !important;
+  box-shadow: 6px 6px 0 var(--glowup-neu-green) !important;
+}
+
+input,
+textarea,
+select,
+.d2l-input {
+  background-color: var(--glowup-neu-card) !important;
+  color: var(--glowup-neu-ink) !important;
+  border: 2px solid var(--glowup-neu-ink) !important;
+  border-radius: 2px !important;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--glowup-neu-green) !important;
+  box-shadow: 0 0 0 3px var(--glowup-neu-lime) !important;
+  outline: none !important;
+}
+
+.d2l-minibar,
+.d2l-minibar-container {
+  background-color: var(--glowup-neu-lime-soft) !important;
+  border-bottom: 2px solid var(--glowup-neu-ink) !important;
+  box-shadow: inset 0 -4px 0 var(--glowup-neu-lime) !important;
+}
+
+#lms-glowup-sidebar {
+  --glowup-sidebar-bg: #d4ff4a;
+  --glowup-sidebar-border: #0a0a0a;
+  --glowup-sidebar-border-width: 2px;
+  --glowup-sidebar-text: #0a0a0a;
+  --glowup-sidebar-hover-bg: #ffffff;
+  --glowup-sidebar-hover-text: #0a0a0a;
+  --glowup-sidebar-active-bg: #0a0a0a;
+  --glowup-sidebar-active-text: #d4ff4a;
+  --glowup-sidebar-active-indicator: #16a34a;
+  --glowup-sidebar-divider: #0a0a0a;
+  --glowup-sidebar-divider-opacity: 0.22;
+  --glowup-sidebar-focus-ring: #16a34a;
+  --glowup-sidebar-shadow: 6px 0 0 #16a34a;
+  --glowup-sidebar-icon-opacity: 1;
+}

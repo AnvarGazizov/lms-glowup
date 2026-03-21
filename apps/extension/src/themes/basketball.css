@@ -1,6 +1,8 @@
 /* Basketball — court red, black & silver with gold accents */
 
 :root {
+  /* Raptors / team gold — also used for sidebar links & table headers */
+  --glowup-basketball-gold: #b4975a;
   --d2l-color-ferrite: #e8e8ea !important;
   --d2l-color-tungsten: #a1a1a4 !important;
   --d2l-color-mica: #1a1a1a !important;
@@ -30,20 +32,21 @@ body {
 
 .d2l-branding-navigation-band {
   background-color: #ce1141 !important;
+  border-bottom: 1px solid #a80d34 !important;
 }
 
 .d2l-card,
 d2l-card,
 .d2l-enrollment-card {
   background-color: #1a1a1a !important;
-  border-color: #2a2a2a !important;
+  border: 1px solid #3a3a3a !important;
   color: #e8e8ea !important;
 }
 
 .d2l-widget,
 .d2l-homepage-widget {
   background-color: #1a1a1a !important;
-  border-color: #2a2a2a !important;
+  border: 1px solid #3a3a3a !important;
   color: #e8e8ea !important;
 }
 
@@ -67,7 +70,7 @@ a:hover,
 d2l-button {
   background-color: #ce1141 !important;
   color: #ffffff !important;
-  border-color: #a80d34 !important;
+  border: 2px solid #a80d34 !important;
 }
 
 table,
@@ -75,12 +78,14 @@ table,
 .d2l-datalist {
   background-color: #1a1a1a !important;
   color: #e8e8ea !important;
+  border: 1px solid #3a3a3a !important;
 }
 
 th,
 .d2l-table-header {
   background-color: #222222 !important;
-  color: #b4975a !important;
+  color: var(--glowup-basketball-gold) !important;
+  border-bottom: 1px solid #3a3a3a !important;
 }
 
 tr:nth-child(even) {
@@ -90,7 +95,7 @@ tr:nth-child(even) {
 .d2l-dropdown-content,
 d2l-dropdown-menu {
   background-color: #1a1a1a !important;
-  border-color: #2a2a2a !important;
+  border: 1px solid #3a3a3a !important;
 }
 
 input,
@@ -99,23 +104,32 @@ select,
 .d2l-input {
   background-color: #222222 !important;
   color: #e8e8ea !important;
-  border-color: #3a3a3a !important;
+  border: 1px solid #3a3a3a !important;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: #ce1141 !important;
+  outline: none !important;
+  box-shadow: 0 0 0 2px rgba(206, 17, 65, 0.35) !important;
 }
 
 .d2l-minibar,
 .d2l-minibar-container {
   background-color: #0a0a0a !important;
+  border-bottom: 1px solid #2a2a2a !important;
 }
 
 #lms-glowup-sidebar {
   --glowup-sidebar-bg: #121212;
   --glowup-sidebar-border: rgba(206, 17, 65, 0.4);
-  --glowup-sidebar-text: #ececf0;
-  --glowup-sidebar-hover-bg: rgba(206, 17, 65, 0.18);
-  --glowup-sidebar-hover-text: #ffffff;
+  --glowup-sidebar-text: var(--glowup-basketball-gold);
+  --glowup-sidebar-hover-bg: rgba(180, 151, 90, 0.14);
+  --glowup-sidebar-hover-text: #d4bc7a;
   --glowup-sidebar-active-bg: #ce1141;
   --glowup-sidebar-active-text: #ffffff;
-  --glowup-sidebar-active-indicator: #ffffff;
+  --glowup-sidebar-active-indicator: var(--glowup-basketball-gold);
   --glowup-sidebar-divider: rgba(255, 255, 255, 0.14);
   --glowup-sidebar-focus-ring: #ff8fab;
   --glowup-sidebar-shadow: 10px 0 32px rgba(0, 0, 0, 0.6);
