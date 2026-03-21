@@ -1,0 +1,116 @@
+/* Dark theme — high-contrast dark background with light text */
+
+:root {
+  --d2l-color-ferrite: #e0e0e0 !important;
+  --d2l-color-tungsten: #b0b0b0 !important;
+  --d2l-color-mica: #1e1e2e !important;
+  --d2l-color-sylvite: #2a2a3c !important;
+  --d2l-color-gypsum: #1e1e2e !important;
+  --d2l-color-regolith: #16161e !important;
+  --d2l-color-celestine: #90caf9 !important;
+  --d2l-color-celestine-minus-1: #64b5f6 !important;
+}
+
+body {
+  background-color: #121218 !important;
+  color: #e0e0e0 !important;
+}
+
+.d2l-page-main,
+.d2l-body {
+  background-color: #121218 !important;
+  color: #e0e0e0 !important;
+}
+
+.d2l-navigation,
+.d2l-navigation-s {
+  background-color: #1a1a28 !important;
+  border-bottom-color: #2a2a3c !important;
+}
+
+.d2l-branding-navigation-band {
+  background-color: #0d0d14 !important;
+}
+
+/* Cards */
+.d2l-card,
+d2l-card,
+.d2l-enrollment-card {
+  background-color: #1e1e2e !important;
+  border-color: #2a2a3c !important;
+  color: #e0e0e0 !important;
+}
+
+/* Widgets & panels */
+.d2l-widget,
+.d2l-homepage-widget {
+  background-color: #1e1e2e !important;
+  border-color: #2a2a3c !important;
+  color: #e0e0e0 !important;
+}
+
+.d2l-widget-header,
+.d2l-widget .d2l-heading {
+  color: #f0f0f0 !important;
+}
+
+/* Links */
+a,
+.d2l-link,
+.d2l-textblock a {
+  color: #90caf9 !important;
+}
+
+a:hover,
+.d2l-link:hover {
+  color: #bbdefb !important;
+}
+
+/* Buttons */
+.d2l-button,
+d2l-button {
+  background-color: #2a2a3c !important;
+  color: #e0e0e0 !important;
+  border-color: #3a3a4c !important;
+}
+
+/* Tables */
+table,
+.d2l-table,
+.d2l-datalist {
+  background-color: #1e1e2e !important;
+  color: #e0e0e0 !important;
+}
+
+th,
+.d2l-table-header {
+  background-color: #252538 !important;
+  color: #e0e0e0 !important;
+}
+
+tr:nth-child(even) {
+  background-color: #1a1a28 !important;
+}
+
+/* Dropdowns & menus */
+.d2l-dropdown-content,
+d2l-dropdown-menu {
+  background-color: #1e1e2e !important;
+  border-color: #2a2a3c !important;
+}
+
+/* Input fields */
+input,
+textarea,
+select,
+.d2l-input {
+  background-color: #252538 !important;
+  color: #e0e0e0 !important;
+  border-color: #3a3a4c !important;
+}
+
+/* Footer */
+.d2l-minibar,
+.d2l-minibar-container {
+  background-color: #0d0d14 !important;
+}

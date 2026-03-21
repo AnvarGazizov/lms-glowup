@@ -1,0 +1,122 @@
+/* Minimal theme — clean, airy look with reduced visual noise */
+
+:root {
+  --d2l-color-ferrite: #2d3436 !important;
+  --d2l-color-tungsten: #636e72 !important;
+  --d2l-color-mica: #ffffff !important;
+  --d2l-color-sylvite: #f1f3f5 !important;
+  --d2l-color-gypsum: #f8f9fa !important;
+  --d2l-color-regolith: #ffffff !important;
+  --d2l-color-celestine: #0984e3 !important;
+  --d2l-color-celestine-minus-1: #0652DD !important;
+}
+
+body {
+  background-color: #f8f9fa !important;
+  color: #2d3436 !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+}
+
+.d2l-page-main,
+.d2l-body {
+  background-color: #f8f9fa !important;
+}
+
+.d2l-navigation,
+.d2l-navigation-s {
+  background-color: #ffffff !important;
+  border-bottom: 1px solid #e9ecef !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04) !important;
+}
+
+.d2l-branding-navigation-band {
+  background-color: #ffffff !important;
+  height: 3px !important;
+}
+
+/* Cards — clean flat style */
+.d2l-card,
+d2l-card,
+.d2l-enrollment-card {
+  background-color: #ffffff !important;
+  border: 1px solid #e9ecef !important;
+  border-radius: 12px !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04) !important;
+  color: #2d3436 !important;
+}
+
+.d2l-card:hover,
+d2l-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Widgets */
+.d2l-widget,
+.d2l-homepage-widget {
+  background-color: #ffffff !important;
+  border: 1px solid #e9ecef !important;
+  border-radius: 12px !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04) !important;
+}
+
+.d2l-widget-header,
+.d2l-widget .d2l-heading {
+  color: #2d3436 !important;
+  font-weight: 600 !important;
+}
+
+/* Links */
+a,
+.d2l-link,
+.d2l-textblock a {
+  color: #0984e3 !important;
+  text-decoration: none !important;
+}
+
+a:hover,
+.d2l-link:hover {
+  color: #0652DD !important;
+  text-decoration: underline !important;
+}
+
+/* Buttons — clean pill style */
+.d2l-button,
+d2l-button {
+  border-radius: 8px !important;
+  font-weight: 500 !important;
+}
+
+/* Tables — simplified */
+table,
+.d2l-table,
+.d2l-datalist {
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+}
+
+th,
+.d2l-table-header {
+  background-color: #f1f3f5 !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  font-size: 0.75rem !important;
+  letter-spacing: 0.05em !important;
+}
+
+/* Input fields */
+input,
+textarea,
+select,
+.d2l-input {
+  border: 1px solid #dee2e6 !important;
+  border-radius: 8px !important;
+  background-color: #ffffff !important;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: #0984e3 !important;
+  box-shadow: 0 0 0 3px rgba(9, 132, 227, 0.15) !important;
+  outline: none !important;
+}

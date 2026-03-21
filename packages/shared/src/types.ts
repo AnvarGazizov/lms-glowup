@@ -13,3 +13,11 @@ export interface User {
   email: string
   created_at: string
 }
+
+export interface ThemeInfo {
+  id: string
+  name: string
+  description: string
+  css: string
+  author?: string
+}

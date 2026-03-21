@@ -1,0 +1,42 @@
+/* Shared base normalization applied before any theme.
+   Smooths transitions when themes are toggled on/off. */
+
+[data-lms-glowup-themed] * {
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+/* Full-width layout feature */
+[data-lms-glowup-full-width] .d2l-max-width,
+[data-lms-glowup-full-width] .d2l-page-main,
+[data-lms-glowup-full-width] .d2l-homepage .d2l-max-width {
+  max-width: 100% !important;
+  width: 100% !important;
+  padding-left: 2rem !important;
+  padding-right: 2rem !important;
+}
+
+/* Hide banner feature */
+[data-lms-glowup-hide-banner] .d2l-branding-navigation-band,
+[data-lms-glowup-hide-banner] .d2l-organization-image,
+[data-lms-glowup-hide-banner] .d2l-course-banner {
+  display: none !important;
+}
+
+/* Compact nav feature */
+[data-lms-glowup-compact-nav] .d2l-navigation {
+  padding: 0.25rem 0 !important;
+}
+
+[data-lms-glowup-compact-nav] .d2l-navigation .d2l-navigation-s-main-wrapper {
+  min-height: auto !important;
+}
+
+/* Sidebar nav — adjust full-width padding when both are active */
+[data-lms-glowup-sidebar-nav][data-lms-glowup-full-width] .d2l-max-width,
+[data-lms-glowup-sidebar-nav][data-lms-glowup-full-width] .d2l-page-main {
+  padding-left: 1.5rem !important;
+  padding-right: 1.5rem !important;
+}
