@@ -10,35 +10,37 @@
   position: sticky;
   top: 0;
   height: 100vh;
-  background: #ffffff;
-  border-right: 1px solid var(--d2l-color-sylvite, #e3e6ea);
+  border-right: 1px solid var(--d2l-color-sylvite, #ebebeb);
   z-index: 1000;
   display: flex;
   flex-direction: column;
   overflow-y: auto;
   overflow-x: hidden;
-  padding: 1rem 0;
+  padding: 1.25rem 0;
+  background-color: #fafafa;
 }
 
 #lms-glowup-content {
   flex: 1;
   min-width: 0;
+  height: 100%;
 }
 
 #lms-glowup-sidebar .glowup-sidebar-section {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
-  padding: 0 0.75rem;
+  gap: 2px;
+  padding: 0 0.625rem;
 }
 
 #lms-glowup-sidebar .glowup-sidebar-item {
   display: flex;
   align-items: center;
-  padding: 0.6rem 0.85rem;
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--d2l-color-ferrite, #494c4e);
+  gap: 12px;
+  padding: 10px ! important;
+  font-size: 15px ! important;
+  font-weight: 400;
+  color: #71717a;
   text-decoration: none;
   white-space: nowrap;
   overflow: hidden;
@@ -49,20 +51,58 @@
   width: 100%;
   text-align: left;
   font-family: inherit;
-  border-radius: 8px;
-  transition: all 0.15s ease;
+  border-radius: 10px;
+  transition: background 0.15s ease, color 0.15s ease;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  margin: 0 !important;
 }
 
 #lms-glowup-sidebar .glowup-sidebar-item:hover {
-  background-color: var(--d2l-color-gypsum, #f2f3f5);
-  color: var(--d2l-color-ferrite, #202122);
-  transform: translateX(2px);
+  background: #f4f4f5;
+  color: #3f3f46;
+}
+
+#lms-glowup-sidebar .glowup-sidebar-item.active {
+  background: #f0f0f1;
+  color: #18181b;
+  font-weight: 500;
+}
+
+#lms-glowup-sidebar .glowup-sidebar-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  color: inherit;
+  opacity: 0.7;
+}
+
+#lms-glowup-sidebar .glowup-sidebar-item.active .glowup-sidebar-icon {
+  opacity: 1;
+}
+
+#lms-glowup-sidebar .glowup-sidebar-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+#lms-glowup-sidebar .glowup-sidebar-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 15px !important;
+}
+
+#lms-glowup-sidebar .glowup-sidebar-item [class*="d2l"] {
+  padding: 0 !important;
 }
 
 #lms-glowup-sidebar .glowup-sidebar-divider {
   height: 1px;
-  background: var(--d2l-color-sylvite, #e3e6ea);
-  margin: 0.75rem 0.5rem;
+  background: #ebebeb;
+  margin: 10px 6px;
 }
 
 /* Hide the original Brightspace header */
