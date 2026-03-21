@@ -1,3 +1,4 @@
+import { setAnnouncementsListShadowFixActive } from "./announcements-list-shadow-fix"
 import { setCalendarShadowFixActive } from "./calendar-shadow-fix"
 import { setEnrollmentCardTextFixActive } from "./enrollment-card-fix"
 import { setPortfolioShadowFixActive } from "./portfolio-shadow-fix"
@@ -6,18 +7,18 @@ import { applySidebarNav } from "./sidebar-nav"
 
 import baseCSS from "data-text:../themes/base.css"
 import leSurfacesCSS from "data-text:../themes/le-surfaces.css"
-import mapleLeafsCSS from "data-text:../themes/maple-leafs.css"
-import raptorsCSS from "data-text:../themes/raptors.css"
+import basketballCSS from "data-text:../themes/basketball.css"
 import camoCSS from "data-text:../themes/camo.css"
 import vaporwaveCSS from "data-text:../themes/vaporwave.css"
+import retroCSS from "data-text:../themes/retro.css"
 
 const STYLE_ID = "lms-glowup-theme"
 
 const THEME_MAP: Record<string, string> = {
-  "maple-leafs": mapleLeafsCSS,
-  raptors: raptorsCSS,
+  basketball: basketballCSS,
   camo: camoCSS,
-  vaporwave: vaporwaveCSS
+  vaporwave: vaporwaveCSS,
+  retro: retroCSS
 }
 
 export function buildCSS(prefs: ThemePreferences): string {
@@ -50,6 +51,7 @@ export function applyTheme(
   const themed = prefs.activeTheme !== "none"
   setEnrollmentCardTextFixActive(themed)
   setCalendarShadowFixActive(themed)
+  setAnnouncementsListShadowFixActive(themed)
   setPortfolioShadowFixActive(themed)
   applySidebarNav(isLoggedIn && prefs.enabledFeatures.sidebarNav)
 }
@@ -89,6 +91,7 @@ export function removeTheme(): void {
   document.getElementById(STYLE_ID)?.remove()
   setEnrollmentCardTextFixActive(false)
   setCalendarShadowFixActive(false)
+  setAnnouncementsListShadowFixActive(false)
   setPortfolioShadowFixActive(false)
   applySidebarNav(false)
   const root = document.documentElement

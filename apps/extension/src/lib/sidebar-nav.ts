@@ -37,6 +37,7 @@ const ICONS: Record<string, string> = {
   globe: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>`,
   trendingUp: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>`,
   folder: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>`,
+  chevronDown: `<svg class="glowup-sidebar-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>`,
 }
 
 const LABEL_ICON_PATTERNS: [RegExp, string][] = [
@@ -96,6 +97,13 @@ function syncSidebarActiveItems(): void {
       if (isActivePath(item.href)) item.classList.add("active")
     }
   }
+
+  const disclosure = sidebar.querySelector<HTMLDetailsElement>(
+    ".glowup-sidebar-disclosure"
+  )
+  if (disclosure?.querySelector(".glowup-sidebar-item.active")) {
+    disclosure.open = true
+  }
 }
 
 function attachSidebarActiveSync(): void {
@@ -116,33 +124,85 @@ function detachSidebarActiveSync(): void {
 
 // ── Sidebar DOM construction ────────────────────────────────
 
+/** Visible course nav rows before folding the rest into “More”. Keeps the bar usable on short viewports. */
+const SIDEBAR_PRIMARY_NAV_MAX = 9
+
+function createNavLinkAnchor(link: NavLink): HTMLAnchorElement {
+  const a = document.createElement("a")
+  a.className = "glowup-sidebar-item"
+  a.href = link.href
+
+  const iconSpan = document.createElement("span")
+  iconSpan.className = "glowup-sidebar-icon"
+  iconSpan.innerHTML = iconForLabel(link.label)
+
+  const labelSpan = document.createElement("span")
+  labelSpan.className = "glowup-sidebar-label"
+  labelSpan.textContent = link.label
+
+  a.appendChild(iconSpan)
+  a.appendChild(labelSpan)
+  return a
+}
+
 function buildSidebar(navLinks: NavLink[], userEls: HTMLElement[]): HTMLElement {
   const sidebar = document.createElement("nav")
   sidebar.id = SIDEBAR_ID
 
+  const body = document.createElement("div")
+  body.className = "glowup-sidebar-body"
+
+  const scroll = document.createElement("div")
+  scroll.className = "glowup-sidebar-nav-scroll"
+
   const section = document.createElement("div")
   section.className = "glowup-sidebar-section"
 
-  for (const link of navLinks) {
-    const a = document.createElement("a")
-    a.className = "glowup-sidebar-item"
-    a.href = link.href
+  const primary = navLinks.slice(0, SIDEBAR_PRIMARY_NAV_MAX)
+  const overflow = navLinks.slice(SIDEBAR_PRIMARY_NAV_MAX)
 
-    const iconSpan = document.createElement("span")
-    iconSpan.className = "glowup-sidebar-icon"
-    iconSpan.innerHTML = iconForLabel(link.label)
-
-    const labelSpan = document.createElement("span")
-    labelSpan.className = "glowup-sidebar-label"
-    labelSpan.textContent = link.label
-
-    a.appendChild(iconSpan)
-    a.appendChild(labelSpan)
-    section.appendChild(a)
+  for (const link of primary) {
+    section.appendChild(createNavLinkAnchor(link))
   }
 
+  if (overflow.length > 0) {
+    const details = document.createElement("details")
+    details.className = "glowup-sidebar-disclosure"
+
+    const summary = document.createElement("summary")
+    summary.className = "glowup-sidebar-disclosure-summary"
+
+    const sumIcon = document.createElement("span")
+    sumIcon.className = "glowup-sidebar-icon"
+    sumIcon.innerHTML = ICONS.chevronDown
+
+    const sumLabel = document.createElement("span")
+    sumLabel.className = "glowup-sidebar-label"
+    sumLabel.textContent = "More"
+
+    summary.appendChild(sumIcon)
+    summary.appendChild(sumLabel)
+
+    const panel = document.createElement("div")
+    panel.className = "glowup-sidebar-disclosure-panel"
+
+    for (const link of overflow) {
+      panel.appendChild(createNavLinkAnchor(link))
+    }
+
+    details.appendChild(summary)
+    details.appendChild(panel)
+    section.appendChild(details)
+  }
+
+  scroll.appendChild(section)
+  body.appendChild(scroll)
+
+  const footer = document.createElement("div")
+  footer.className = "glowup-sidebar-footer"
+
   if (userEls.length > 0) {
-    appendDivider(section)
+    appendDivider(footer)
 
     for (const el of userEls) {
       const label = el.textContent?.trim() || ""
@@ -161,11 +221,12 @@ function buildSidebar(navLinks: NavLink[], userEls: HTMLElement[]): HTMLElement 
       el.appendChild(labelSpan)
     }
     for (const el of userEls) {
-      section.appendChild(el)
+      footer.appendChild(el)
     }
   }
 
-  sidebar.appendChild(section)
+  sidebar.appendChild(body)
+  sidebar.appendChild(footer)
   return sidebar
 }
 

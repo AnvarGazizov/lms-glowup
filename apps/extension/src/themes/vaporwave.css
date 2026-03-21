@@ -137,12 +137,16 @@ select:focus {
 }
 
 #lms-glowup-sidebar {
-  --glowup-sidebar-bg: #1a0533;
-  --glowup-sidebar-border: #b967ff;
-  --glowup-sidebar-text: #b590d0;
-  --glowup-sidebar-hover-bg: #2d1b69;
-  --glowup-sidebar-hover-text: #ff71ce;
-  --glowup-sidebar-active-bg: #b967ff;
+  --glowup-sidebar-bg: #120428;
+  --glowup-sidebar-border: rgba(185, 103, 255, 0.55);
+  --glowup-sidebar-text: #f0e4ff;
+  --glowup-sidebar-hover-bg: rgba(255, 113, 206, 0.14);
+  --glowup-sidebar-hover-text: #ffffff;
+  --glowup-sidebar-active-bg: #4c1d95;
   --glowup-sidebar-active-text: #ffffff;
-  --glowup-sidebar-divider: #2d1b69;
+  --glowup-sidebar-active-indicator: #ff71ce;
+  --glowup-sidebar-divider: rgba(185, 103, 255, 0.35);
+  --glowup-sidebar-focus-ring: #01cdfe;
+  --glowup-sidebar-shadow: 8px 0 40px rgba(60, 0, 90, 0.45);
+  --glowup-sidebar-icon-opacity: 1;
 }

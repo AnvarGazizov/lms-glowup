@@ -1,4 +1,4 @@
-/* Toronto Raptors — red, black & silver with gold accents */
+/* Basketball — court red, black & silver with gold accents */
 
 :root {
   --d2l-color-ferrite: #e8e8ea !important;
@@ -108,12 +108,16 @@ select,
 }
 
 #lms-glowup-sidebar {
-  --glowup-sidebar-bg: #1a1a1a;
-  --glowup-sidebar-border: #2a2a2a;
-  --glowup-sidebar-text: #a1a1a4;
-  --glowup-sidebar-hover-bg: #222222;
-  --glowup-sidebar-hover-text: #e8e8ea;
+  --glowup-sidebar-bg: #121212;
+  --glowup-sidebar-border: rgba(206, 17, 65, 0.4);
+  --glowup-sidebar-text: #ececf0;
+  --glowup-sidebar-hover-bg: rgba(206, 17, 65, 0.18);
+  --glowup-sidebar-hover-text: #ffffff;
   --glowup-sidebar-active-bg: #ce1141;
   --glowup-sidebar-active-text: #ffffff;
-  --glowup-sidebar-divider: #2a2a2a;
+  --glowup-sidebar-active-indicator: #ffffff;
+  --glowup-sidebar-divider: rgba(255, 255, 255, 0.14);
+  --glowup-sidebar-focus-ring: #ff8fab;
+  --glowup-sidebar-shadow: 10px 0 32px rgba(0, 0, 0, 0.6);
+  --glowup-sidebar-icon-opacity: 1;
 }

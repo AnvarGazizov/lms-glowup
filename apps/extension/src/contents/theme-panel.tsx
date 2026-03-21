@@ -154,10 +154,7 @@ function ThemePanel() {
                   className={`glowup-theme-card${prefs.activeTheme === theme.id ? " active" : ""}`}
                   onClick={() => selectTheme(theme.id)}
                 >
-                  <div className="glowup-theme-card-name">{theme.name}</div>
-                  <div className="glowup-theme-card-desc">
-                    {theme.description}
-                  </div>
+                  <span className="glowup-theme-card-name">{theme.name}</span>
                 </button>
               ))}
             </div>

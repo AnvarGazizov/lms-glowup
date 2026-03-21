@@ -1,0 +1,166 @@
+/* Retro — 2025 colour maximalism, warm retro e‑commerce palette
+   (cream, coral, mustard, teal; chunky contrast). Inspired by
+   https://dribbble.com/shots/23489820-Retro-eCommerce-app */
+
+:root {
+  --d2l-color-ferrite: #2c1810 !important;
+  --d2l-color-tungsten: #6b5344 !important;
+  --d2l-color-mica: #fff8f0 !important;
+  --d2l-color-sylvite: #ffffff !important;
+  --d2l-color-gypsum: #ffe8d9 !important;
+  --d2l-color-regolith: #fff3e8 !important;
+  --d2l-color-celestine: #0f766e !important;
+  --d2l-color-celestine-minus-1: #115e59 !important;
+}
+
+body {
+  background: linear-gradient(
+    165deg,
+    #fff8f0 0%,
+    #ffe8d9 42%,
+    #ffd6a8 100%
+  ) !important;
+  background-attachment: fixed !important;
+  color: #2c1810 !important;
+}
+
+.d2l-page-main,
+.d2l-body {
+  background-color: transparent !important;
+  color: #2c1810 !important;
+}
+
+.d2l-navigation,
+.d2l-navigation-s {
+  background: linear-gradient(90deg, #fff8f0, #ffffff) !important;
+  border-bottom: 3px solid #2c1810 !important;
+  box-shadow: 0 6px 0 #e85d4c, 0 10px 24px rgba(44, 24, 16, 0.12) !important;
+}
+
+.d2l-branding-navigation-band {
+  background: linear-gradient(
+    90deg,
+    #e85d4c 0%,
+    #e8a318 35%,
+    #0f766e 70%,
+    #c026d3 100%
+  ) !important;
+  height: 5px !important;
+}
+
+.d2l-card,
+d2l-card,
+.d2l-enrollment-card {
+  background-color: #ffffff !important;
+  border: 2px solid #2c1810 !important;
+  color: #2c1810 !important;
+  box-shadow: 6px 6px 0 #e8a318, 0 2px 12px rgba(44, 24, 16, 0.08) !important;
+}
+
+.d2l-card:hover,
+d2l-card:hover {
+  box-shadow: 6px 6px 0 #0f766e, 0 4px 20px rgba(232, 93, 76, 0.2) !important;
+}
+
+.d2l-widget,
+.d2l-homepage-widget {
+  background-color: #ffffff !important;
+  border: 2px solid #2c1810 !important;
+  color: #2c1810 !important;
+  box-shadow: 5px 5px 0 #e85d4c, 0 2px 12px rgba(44, 24, 16, 0.06) !important;
+}
+
+.d2l-widget-header,
+.d2l-widget .d2l-heading {
+  color: #b91c1c !important;
+}
+
+a,
+.d2l-link,
+.d2l-textblock a {
+  color: #0f766e !important;
+  font-weight: 600 !important;
+}
+
+a:hover,
+.d2l-link:hover {
+  color: #c026d3 !important;
+}
+
+.d2l-button,
+d2l-button {
+  background: linear-gradient(135deg, #e85d4c, #e8a318) !important;
+  color: #ffffff !important;
+  border: 2px solid #2c1810 !important;
+  box-shadow: 3px 3px 0 #2c1810 !important;
+}
+
+.d2l-button:hover,
+d2l-button:hover {
+  filter: brightness(1.05);
+  box-shadow: 4px 4px 0 #2c1810 !important;
+}
+
+table,
+.d2l-table,
+.d2l-datalist {
+  background-color: #fff8f0 !important;
+  color: #2c1810 !important;
+  border: 2px solid #2c1810 !important;
+}
+
+th,
+.d2l-table-header {
+  background: linear-gradient(180deg, #ffe8d9, #ffd6a8) !important;
+  color: #2c1810 !important;
+}
+
+tr:nth-child(even) {
+  background-color: rgba(232, 163, 24, 0.12) !important;
+}
+
+.d2l-dropdown-content,
+d2l-dropdown-menu {
+  background-color: #ffffff !important;
+  border: 2px solid #2c1810 !important;
+  box-shadow: 6px 6px 0 #0f766e !important;
+}
+
+input,
+textarea,
+select,
+.d2l-input {
+  background-color: #ffffff !important;
+  color: #2c1810 !important;
+  border: 2px solid #2c1810 !important;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: #0f766e !important;
+  box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.25) !important;
+  outline: none !important;
+}
+
+.d2l-minibar,
+.d2l-minibar-container {
+  background: linear-gradient(90deg, #fff8f0, #ffe8d9) !important;
+  border-bottom: 2px solid #2c1810 !important;
+}
+
+#lms-glowup-sidebar {
+  --glowup-sidebar-bg: #fffdfb;
+  --glowup-sidebar-border: #2c1810;
+  --glowup-sidebar-border-width: 2px;
+  --glowup-sidebar-text: #3d2918;
+  --glowup-sidebar-hover-bg: #fff0e6;
+  --glowup-sidebar-hover-text: #991b1b;
+  --glowup-sidebar-active-bg: #0f766e;
+  --glowup-sidebar-active-text: #ffffff;
+  --glowup-sidebar-active-indicator: #e8a318;
+  --glowup-sidebar-divider: rgba(44, 24, 16, 0.18);
+  --glowup-sidebar-focus-ring: #0f766e;
+  --glowup-sidebar-shadow: 6px 0 28px rgba(44, 24, 16, 0.1);
+  --glowup-sidebar-icon-opacity: 0.96;
+}

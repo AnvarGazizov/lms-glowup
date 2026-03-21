@@ -171,6 +171,25 @@ html[data-lms-glowup-themed] .d2l-datalist-nesteditem-nestedcontainer > div {
   ) !important;
 }
 
+/* Announcements (legacy nested datalist): inner wrapper below the title row stays white */
+html[data-lms-glowup-themed] .d2l-datalist-nesteditem-nestedcontainer > div > div {
+  background-color: color-mix(
+    in srgb,
+    var(--d2l-color-sylvite, #2a2a2a) 52%,
+    transparent
+  ) !important;
+}
+
+/* Nested slot content is light DOM; reinforces theme when shadow fix is not involved */
+html[data-lms-glowup-themed] d2l-list-item > [slot="nested"] {
+  background-color: color-mix(
+    in srgb,
+    var(--d2l-color-mica, #1a1a1a) 90%,
+    transparent
+  ) !important;
+  color: var(--d2l-color-ferrite, inherit) !important;
+}
+
 html[data-lms-glowup-themed] .d2l-datalist-item,
 html[data-lms-glowup-themed] .d2l-datalist-item-actionable,
 html[data-lms-glowup-themed] .d2l-datalist-nesteditem {

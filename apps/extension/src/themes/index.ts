@@ -1,38 +1,31 @@
 export interface ThemeDefinition {
   id: string
   name: string
-  description: string
 }
 
 export const THEMES: ThemeDefinition[] = [
   {
     id: "none",
-    name: "Default",
-    description: "Original Brightspace appearance"
+    name: "Default"
   },
   {
-    id: "maple-leafs",
-    name: "Maple Leafs",
-    description: "Toronto Maple Leafs blue & white"
-  },
-  {
-    id: "raptors",
-    name: "Raptors",
-    description: "Toronto Raptors red, black & silver"
+    id: "basketball",
+    name: "Basketball"
   },
   {
     id: "camo",
-    name: "Camo",
-    description: "Hunting woodland camouflage"
+    name: "Camo"
   },
   {
     id: "vaporwave",
-    name: "Vaporwave",
-    description: "Retro neon pink, cyan & purple"
+    name: "Vaporwave"
+  },
+  {
+    id: "retro",
+    name: "Retro"
   },
   {
     id: "custom",
-    name: "Custom CSS",
-    description: "Write your own CSS overrides"
+    name: "Custom CSS"
   }
 ]

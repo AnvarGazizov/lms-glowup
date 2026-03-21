@@ -125,12 +125,16 @@ select,
 }
 
 #lms-glowup-sidebar {
-  --glowup-sidebar-bg: #2e3d22;
-  --glowup-sidebar-border: #4a5e38;
-  --glowup-sidebar-text: #d4c9a8;
-  --glowup-sidebar-hover-bg: #3b4a2f;
-  --glowup-sidebar-hover-text: #f5f0e0;
-  --glowup-sidebar-active-bg: #4a5e38;
-  --glowup-sidebar-active-text: #f5f0e0;
-  --glowup-sidebar-divider: #4a5e38;
+  --glowup-sidebar-bg: #243018;
+  --glowup-sidebar-border: rgba(196, 217, 106, 0.4);
+  --glowup-sidebar-text: #f5f0e0;
+  --glowup-sidebar-hover-bg: rgba(196, 217, 106, 0.14);
+  --glowup-sidebar-hover-text: #ffffff;
+  --glowup-sidebar-active-bg: #3d4f2e;
+  --glowup-sidebar-active-text: #fffef8;
+  --glowup-sidebar-active-indicator: #c4d96a;
+  --glowup-sidebar-divider: rgba(212, 201, 168, 0.28);
+  --glowup-sidebar-focus-ring: #d4e87a;
+  --glowup-sidebar-shadow: 8px 0 30px rgba(0, 0, 0, 0.4);
+  --glowup-sidebar-icon-opacity: 1;
 }
