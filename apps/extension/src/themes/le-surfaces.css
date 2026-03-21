@@ -149,3 +149,92 @@
   ) !important;
   box-shadow: 0 1px 2px rgb(0 0 0 / 0.28);
 }
+
+/* Progress (user progress) + other two-pane tools: left course list uses `.d2l-datalist`
+   with white / gray nested surfaces that clash with dark LE themes. */
+html[data-lms-glowup-themed] .d2l-twopanelselector-side,
+html[data-lms-glowup-themed] .d2l-twopanelselector-side-padding {
+  background-color: transparent !important;
+  color: var(--d2l-color-ferrite, inherit) !important;
+}
+
+html[data-lms-glowup-themed] .d2l-datalist-container.d2l-datalist-style1,
+html[data-lms-glowup-themed] .d2l-datalist-nesteditem-nestedcontainer {
+  background-color: transparent !important;
+}
+
+html[data-lms-glowup-themed] .d2l-datalist-nesteditem-nestedcontainer > div {
+  background-color: color-mix(
+    in srgb,
+    var(--d2l-color-sylvite, #2a2a2a) 52%,
+    transparent
+  ) !important;
+}
+
+html[data-lms-glowup-themed] .d2l-datalist-item,
+html[data-lms-glowup-themed] .d2l-datalist-item-actionable,
+html[data-lms-glowup-themed] .d2l-datalist-nesteditem {
+  background-color: color-mix(
+    in srgb,
+    var(--d2l-color-mica, #1a1a1a) 86%,
+    transparent
+  ) !important;
+  color: var(--d2l-color-ferrite, inherit) !important;
+  border-color: color-mix(
+    in srgb,
+    var(--d2l-color-tungsten, #888) 22%,
+    transparent
+  ) !important;
+}
+
+html[data-lms-glowup-themed] .d2l-datalist-item .d2l-datalist-item-content,
+html[data-lms-glowup-themed] .d2l-datalist-item .d2l-datalist-item-content-first,
+html[data-lms-glowup-themed] .d2l-datalist-item .d2l-datalist-item-content-second,
+html[data-lms-glowup-themed]
+  .d2l-datalist-item-actionable
+  .d2l-datalist-item-content-first,
+html[data-lms-glowup-themed]
+  .d2l-datalist-nesteditem
+  .d2l-datalist-item-content-first {
+  background-color: transparent !important;
+  background-image: none !important;
+  color: var(--d2l-color-ferrite, inherit) !important;
+}
+
+/* Profile strip at top of Progress course list */
+html[data-lms-glowup-themed] .d2l-user-profile-card {
+  background-color: color-mix(
+    in srgb,
+    var(--d2l-color-mica, #1a1a1a) 88%,
+    transparent
+  ) !important;
+  color: var(--d2l-color-ferrite, inherit) !important;
+  border-color: color-mix(
+    in srgb,
+    var(--d2l-color-tungsten, #888) 22%,
+    transparent
+  ) !important;
+}
+
+html[data-lms-glowup-themed] .d2l-datalist-item-actionable:hover,
+html[data-lms-glowup-themed] .d2l-datalist-item-actionable:focus-visible {
+  background-color: color-mix(
+    in srgb,
+    var(--d2l-color-celestine, #0f6cbf) 16%,
+    var(--d2l-color-mica, #1a1a1a)
+  ) !important;
+}
+
+html[data-lms-glowup-themed] .d2l-charttooltip:not(.d2l-hidden) {
+  background-color: color-mix(
+    in srgb,
+    var(--d2l-color-gypsum, #1a2744) 90%,
+    transparent
+  ) !important;
+  color: var(--d2l-color-ferrite, inherit) !important;
+  border-color: color-mix(
+    in srgb,
+    var(--d2l-color-tungsten, #888) 28%,
+    transparent
+  ) !important;
+}
