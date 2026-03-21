@@ -1,0 +1,119 @@
+/* Toronto Raptors — red, black & silver with gold accents */
+
+:root {
+  --d2l-color-ferrite: #e8e8ea !important;
+  --d2l-color-tungsten: #a1a1a4 !important;
+  --d2l-color-mica: #1a1a1a !important;
+  --d2l-color-sylvite: #252525 !important;
+  --d2l-color-gypsum: #141414 !important;
+  --d2l-color-regolith: #0a0a0a !important;
+  --d2l-color-celestine: #ce1141 !important;
+  --d2l-color-celestine-minus-1: #a80d34 !important;
+}
+
+body {
+  background-color: #0a0a0a !important;
+  color: #e8e8ea !important;
+}
+
+.d2l-page-main,
+.d2l-body {
+  background-color: #0a0a0a !important;
+  color: #e8e8ea !important;
+}
+
+.d2l-navigation,
+.d2l-navigation-s {
+  background-color: #1a1a1a !important;
+  border-bottom: 2px solid #ce1141 !important;
+}
+
+.d2l-branding-navigation-band {
+  background-color: #ce1141 !important;
+}
+
+.d2l-card,
+d2l-card,
+.d2l-enrollment-card {
+  background-color: #1a1a1a !important;
+  border-color: #2a2a2a !important;
+  color: #e8e8ea !important;
+}
+
+.d2l-widget,
+.d2l-homepage-widget {
+  background-color: #1a1a1a !important;
+  border-color: #2a2a2a !important;
+  color: #e8e8ea !important;
+}
+
+.d2l-widget-header,
+.d2l-widget .d2l-heading {
+  color: #ffffff !important;
+}
+
+a,
+.d2l-link,
+.d2l-textblock a {
+  color: #ce1141 !important;
+}
+
+a:hover,
+.d2l-link:hover {
+  color: #e8375f !important;
+}
+
+.d2l-button,
+d2l-button {
+  background-color: #ce1141 !important;
+  color: #ffffff !important;
+  border-color: #a80d34 !important;
+}
+
+table,
+.d2l-table,
+.d2l-datalist {
+  background-color: #1a1a1a !important;
+  color: #e8e8ea !important;
+}
+
+th,
+.d2l-table-header {
+  background-color: #222222 !important;
+  color: #b4975a !important;
+}
+
+tr:nth-child(even) {
+  background-color: #141414 !important;
+}
+
+.d2l-dropdown-content,
+d2l-dropdown-menu {
+  background-color: #1a1a1a !important;
+  border-color: #2a2a2a !important;
+}
+
+input,
+textarea,
+select,
+.d2l-input {
+  background-color: #222222 !important;
+  color: #e8e8ea !important;
+  border-color: #3a3a3a !important;
+}
+
+.d2l-minibar,
+.d2l-minibar-container {
+  background-color: #0a0a0a !important;
+}
+
+#lms-glowup-sidebar {
+  --glowup-sidebar-bg: #1a1a1a;
+  --glowup-sidebar-border: #2a2a2a;
+  --glowup-sidebar-text: #a1a1a4;
+  --glowup-sidebar-hover-bg: #222222;
+  --glowup-sidebar-hover-text: #e8e8ea;
+  --glowup-sidebar-active-bg: #ce1141;
+  --glowup-sidebar-active-text: #ffffff;
+  --glowup-sidebar-divider: #2a2a2a;
+}

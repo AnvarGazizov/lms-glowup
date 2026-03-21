@@ -10,14 +10,14 @@
   position: sticky;
   top: 0;
   height: 100vh;
-  border-right: 1px solid var(--d2l-color-sylvite, #ebebeb);
+  border-right: 1px solid var(--glowup-sidebar-border, #ebebeb);
   z-index: 1000;
   display: flex;
   flex-direction: column;
   overflow-y: auto;
   overflow-x: hidden;
   padding: 1.25rem 0;
-  background-color: #fafafa;
+  background-color: var(--glowup-sidebar-bg, #fafafa);
 }
 
 #lms-glowup-content {
@@ -40,8 +40,8 @@
   padding: 10px ! important;
   font-size: 15px ! important;
   font-weight: 400;
-  color: #71717a;
-  text-decoration: none;
+  color: var(--glowup-sidebar-text, #71717a) !important;
+  text-decoration: none !important;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -59,13 +59,13 @@
 }
 
 #lms-glowup-sidebar .glowup-sidebar-item:hover {
-  background: #f4f4f5;
-  color: #3f3f46;
+  background: var(--glowup-sidebar-hover-bg, #f4f4f5) !important;
+  color: var(--glowup-sidebar-hover-text, #3f3f46) !important;
 }
 
 #lms-glowup-sidebar .glowup-sidebar-item.active {
-  background: #f0f0f1;
-  color: #18181b;
+  background: var(--glowup-sidebar-active-bg, #f0f0f1) !important;
+  color: var(--glowup-sidebar-active-text, #18181b) !important;
   font-weight: 500;
 }
 
@@ -101,7 +101,7 @@
 
 #lms-glowup-sidebar .glowup-sidebar-divider {
   height: 1px;
-  background: #ebebeb;
+  background: var(--glowup-sidebar-divider, #ebebeb);
   margin: 10px 6px;
 }
 

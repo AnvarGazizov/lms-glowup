@@ -4,9 +4,6 @@ export interface ThemePreferences {
   activeTheme: string
   customCSS: string
   enabledFeatures: {
-    fullWidth: boolean
-    hideBanner: boolean
-    compactNav: boolean
     sidebarNav: boolean
   }
 }
@@ -15,9 +12,6 @@ export const DEFAULT_PREFS: ThemePreferences = {
   activeTheme: "none",
   customCSS: "",
   enabledFeatures: {
-    fullWidth: false,
-    hideBanner: false,
-    compactNav: false,
     sidebarNav: false
   }
 }

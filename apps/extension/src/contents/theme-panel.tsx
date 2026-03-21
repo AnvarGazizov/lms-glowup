@@ -116,52 +116,15 @@ function ThemePanel() {
           <div className="glowup-section">
             <div className="glowup-section-title">Layout</div>
             <div className="glowup-toggle-row">
-              <span className="glowup-toggle-label">Full Width</span>
-              <Toggle
-                checked={prefs.enabledFeatures.fullWidth}
-                onChange={(v) => toggleFeature("fullWidth", v)}
-              />
-            </div>
-            <div className="glowup-toggle-row">
-              <span className="glowup-toggle-label">Hide Banner</span>
-              <Toggle
-                checked={prefs.enabledFeatures.hideBanner}
-                onChange={(v) => toggleFeature("hideBanner", v)}
-              />
-            </div>
-            <div className="glowup-toggle-row">
-              <span className="glowup-toggle-label">Compact Nav</span>
-              <Toggle
-                checked={prefs.enabledFeatures.compactNav}
-                onChange={(v) => toggleFeature("compactNav", v)}
-              />
-            </div>
-            <div className="glowup-toggle-row">
               <span className="glowup-toggle-label">Sidebar Nav</span>
               <Toggle
                 checked={prefs.enabledFeatures.sidebarNav}
-                onChange={(v) => toggleFeature("sidebarNav", v)}
+                onChange={(v) => {
+                  toggleFeature("sidebarNav", v)
+                  setTimeout(() => window.location.reload(), 300)
+                }}
               />
             </div>
-          </div>
-
-          <div className="glowup-section">
-            <div className="glowup-section-title">Custom CSS</div>
-            <textarea
-              className="glowup-css-editor"
-              placeholder={"/* Your custom CSS overrides */\nbody {\n  background: #fff;\n}"}
-              value={customDraft}
-              onChange={(e) => setCustomDraft(e.target.value)}
-            />
-            <button
-              className="glowup-save-btn"
-              onClick={() => {
-                saveCustomCSS()
-                selectTheme("custom")
-              }}
-            >
-              Apply Custom CSS
-            </button>
           </div>
         </div>
       )}

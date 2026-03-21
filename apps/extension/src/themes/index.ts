@@ -11,19 +11,24 @@ export const THEMES: ThemeDefinition[] = [
     description: "Original Brightspace appearance"
   },
   {
-    id: "dark",
-    name: "Dark",
-    description: "High-contrast dark background with light text"
+    id: "maple-leafs",
+    name: "Maple Leafs",
+    description: "Toronto Maple Leafs blue & white"
   },
   {
-    id: "midnight",
-    name: "Midnight",
-    description: "Deep navy blues with cool accents"
+    id: "raptors",
+    name: "Raptors",
+    description: "Toronto Raptors red, black & silver"
   },
   {
-    id: "minimal",
-    name: "Minimal",
-    description: "Clean, airy look with reduced visual noise"
+    id: "camo",
+    name: "Camo",
+    description: "Hunting woodland camouflage"
+  },
+  {
+    id: "vaporwave",
+    name: "Vaporwave",
+    description: "Retro neon pink, cyan & purple"
   },
   {
     id: "custom",

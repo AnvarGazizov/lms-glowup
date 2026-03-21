@@ -1,0 +1,119 @@
+/* Toronto Maple Leafs — deep blue & white with silver accents */
+
+:root {
+  --d2l-color-ferrite: #e8edf3 !important;
+  --d2l-color-tungsten: #a0b0c4 !important;
+  --d2l-color-mica: #00205b !important;
+  --d2l-color-sylvite: #002d72 !important;
+  --d2l-color-gypsum: #001a47 !important;
+  --d2l-color-regolith: #001233 !important;
+  --d2l-color-celestine: #69b3e7 !important;
+  --d2l-color-celestine-minus-1: #4da3df !important;
+}
+
+body {
+  background-color: #001233 !important;
+  color: #e8edf3 !important;
+}
+
+.d2l-page-main,
+.d2l-body {
+  background-color: #001233 !important;
+  color: #e8edf3 !important;
+}
+
+.d2l-navigation,
+.d2l-navigation-s {
+  background-color: #00205b !important;
+  border-bottom: 2px solid #69b3e7 !important;
+}
+
+.d2l-branding-navigation-band {
+  background-color: #001a47 !important;
+}
+
+.d2l-card,
+d2l-card,
+.d2l-enrollment-card {
+  background-color: #00205b !important;
+  border-color: #002d72 !important;
+  color: #e8edf3 !important;
+}
+
+.d2l-widget,
+.d2l-homepage-widget {
+  background-color: #00205b !important;
+  border-color: #002d72 !important;
+  color: #e8edf3 !important;
+}
+
+.d2l-widget-header,
+.d2l-widget .d2l-heading {
+  color: #ffffff !important;
+}
+
+a,
+.d2l-link,
+.d2l-textblock a {
+  color: #69b3e7 !important;
+}
+
+a:hover,
+.d2l-link:hover {
+  color: #9dcbef !important;
+}
+
+.d2l-button,
+d2l-button {
+  background-color: #002d72 !important;
+  color: #ffffff !important;
+  border-color: #003d8f !important;
+}
+
+table,
+.d2l-table,
+.d2l-datalist {
+  background-color: #00205b !important;
+  color: #e8edf3 !important;
+}
+
+th,
+.d2l-table-header {
+  background-color: #002a6b !important;
+  color: #e8edf3 !important;
+}
+
+tr:nth-child(even) {
+  background-color: #001a47 !important;
+}
+
+.d2l-dropdown-content,
+d2l-dropdown-menu {
+  background-color: #00205b !important;
+  border-color: #002d72 !important;
+}
+
+input,
+textarea,
+select,
+.d2l-input {
+  background-color: #002a6b !important;
+  color: #e8edf3 !important;
+  border-color: #003d8f !important;
+}
+
+.d2l-minibar,
+.d2l-minibar-container {
+  background-color: #001233 !important;
+}
+
+#lms-glowup-sidebar {
+  --glowup-sidebar-bg: #00205b;
+  --glowup-sidebar-border: #002d72;
+  --glowup-sidebar-text: #a0b0c4;
+  --glowup-sidebar-hover-bg: #002a6b;
+  --glowup-sidebar-hover-text: #e8edf3;
+  --glowup-sidebar-active-bg: #002d72;
+  --glowup-sidebar-active-text: #ffffff;
+  --glowup-sidebar-divider: #002d72;
+}

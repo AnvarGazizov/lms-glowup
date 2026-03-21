@@ -2,16 +2,18 @@ import type { ThemePreferences } from "./storage"
 import { applySidebarNav } from "./sidebar-nav"
 
 import baseCSS from "data-text:../themes/base.css"
-import darkCSS from "data-text:../themes/dark.css"
-import midnightCSS from "data-text:../themes/midnight.css"
-import minimalCSS from "data-text:../themes/minimal.css"
+import mapleLeafsCSS from "data-text:../themes/maple-leafs.css"
+import raptorsCSS from "data-text:../themes/raptors.css"
+import camoCSS from "data-text:../themes/camo.css"
+import vaporwaveCSS from "data-text:../themes/vaporwave.css"
 
 const STYLE_ID = "lms-glowup-theme"
 
 const THEME_MAP: Record<string, string> = {
-  dark: darkCSS,
-  midnight: midnightCSS,
-  minimal: minimalCSS
+  "maple-leafs": mapleLeafsCSS,
+  raptors: raptorsCSS,
+  camo: camoCSS,
+  vaporwave: vaporwaveCSS
 }
 
 export function buildCSS(prefs: ThemePreferences): string {
@@ -32,10 +34,7 @@ export function buildCSS(prefs: ThemePreferences): string {
 
 function getFeatureAttrs(prefs: ThemePreferences) {
   return {
-    "data-lms-glowup-themed": prefs.activeTheme !== "none",
-    "data-lms-glowup-full-width": prefs.enabledFeatures.fullWidth,
-    "data-lms-glowup-hide-banner": prefs.enabledFeatures.hideBanner,
-    "data-lms-glowup-compact-nav": prefs.enabledFeatures.compactNav
+    "data-lms-glowup-themed": prefs.activeTheme !== "none"
   }
 }
 
@@ -82,7 +81,4 @@ export function removeTheme(): void {
   applySidebarNav(false)
   const root = document.documentElement
   root.removeAttribute("data-lms-glowup-themed")
-  root.removeAttribute("data-lms-glowup-full-width")
-  root.removeAttribute("data-lms-glowup-hide-banner")
-  root.removeAttribute("data-lms-glowup-compact-nav")
 }
