@@ -2,10 +2,12 @@
   display: flex;
   width: 100%;
   min-height: 100vh;
+  /* Used to align fixed LE layers (e.g. `.d2l-page-bg`) with `#lms-glowup-content`. */
+  --glowup-sidebar-width: 240px;
 }
 
 #lms-glowup-sidebar {
-  width: 240px;
+  width: var(--glowup-sidebar-width);
   flex-shrink: 0;
   position: sticky;
   top: 0;
@@ -120,13 +122,14 @@
   max-width: 100% !important;
 }
 
-/* Fixed `.d2l-page-bg` + negative-margin inner wrapper are sized for full-viewport
-   math; inside `#lms-glowup-content` that desyncs `.d2l-column-side-bg` from the
-   real `.d2l-column-flip-side` column. Re-anchor the strip to the content box. */
+/* Fixed `.d2l-page-bg` is viewport-relative. With the Glowup sidebar, real content
+   starts after `#lms-glowup-sidebar` (+ 1px border). `left: 0` + `width: 100%`
+   kept the side strip ~50px left of `.d2l-column-flip-side`. Span only the
+   content column: inset from the left by the sidebar track, pin to viewport right. */
 [data-lms-glowup-sidebar-nav] .d2l-page-bg {
-  left: 0 !important;
+  left: calc(var(--glowup-sidebar-width) + 1px) !important;
   right: 0 !important;
-  width: 100% !important;
+  width: auto !important;
 }
 
 [data-lms-glowup-sidebar-nav] .d2l-page-bg > div {
@@ -141,7 +144,8 @@
   width: min(400px, 100%) !important;
 }
 
-html[data-lms-glowup-themed][data-lms-glowup-sidebar-nav] .d2l-column-flip-wrapper {
+/* Match themed rule in `le-surfaces.css`; header is hidden so use a smaller offset. */
+html[data-lms-glowup-sidebar-nav] .d2l-column-flip-wrapper {
   min-height: calc(100vh - 6rem);
   min-height: calc(100dvh - 6rem);
 }
