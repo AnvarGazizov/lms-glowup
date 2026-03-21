@@ -92,6 +92,10 @@ select.d2l-input-select {
 let observer: MutationObserver | null = null
 let rafScheduled = false
 
+/** MutationObserver does not see nodes added inside shadow roots; folio mounts cards there. */
+let loadListener: (() => void) | null = null
+const retryTimeouts: ReturnType<typeof setTimeout>[] = []
+
 /** One constructable sheet per shadow host (replaced on each patch). */
 const hostSheets = new WeakMap<Element, CSSStyleSheet>()
 
@@ -191,15 +195,43 @@ function schedulePatch() {
   })
 }
 
+function clearDeferredRetries(): void {
+  for (const id of retryTimeouts) {
+    clearTimeout(id)
+  }
+  retryTimeouts.length = 0
+  if (loadListener) {
+    window.removeEventListener("load", loadListener)
+    loadListener = null
+  }
+}
+
+/** Re-run patch after layout and after late shadow-DOM mounts (SPA / web components). */
+function armDeferredPortfolioPatches(): void {
+  clearDeferredRetries()
+  loadListener = () => schedulePatch()
+  if (document.readyState === "complete") {
+    schedulePatch()
+  } else {
+    window.addEventListener("load", loadListener, { once: true })
+  }
+  for (const ms of [0, 50, 150, 400, 1000, 2500]) {
+    retryTimeouts.push(window.setTimeout(() => schedulePatch(), ms))
+  }
+}
+
 export function setPortfolioShadowFixActive(active: boolean): void {
   if (!active) {
+    clearDeferredRetries()
     observer?.disconnect()
     observer = null
     removePatches()
     return
   }
 
+  patchPortfolioShadows()
   schedulePatch()
+  armDeferredPortfolioPatches()
 
   if (!observer) {
     observer = new MutationObserver(schedulePatch)

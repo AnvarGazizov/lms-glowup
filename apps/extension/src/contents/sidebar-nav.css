@@ -120,6 +120,32 @@
   max-width: 100% !important;
 }
 
+/* Fixed `.d2l-page-bg` + negative-margin inner wrapper are sized for full-viewport
+   math; inside `#lms-glowup-content` that desyncs `.d2l-column-side-bg` from the
+   real `.d2l-column-flip-side` column. Re-anchor the strip to the content box. */
+[data-lms-glowup-sidebar-nav] .d2l-page-bg {
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+}
+
+[data-lms-glowup-sidebar-nav] .d2l-page-bg > div {
+  margin-left: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+[data-lms-glowup-sidebar-nav] .d2l-column-side-bg {
+  left: auto !important;
+  right: 0 !important;
+  width: min(400px, 100%) !important;
+}
+
+html[data-lms-glowup-themed][data-lms-glowup-sidebar-nav] .d2l-column-flip-wrapper {
+  min-height: calc(100vh - 6rem);
+  min-height: calc(100dvh - 6rem);
+}
+
 [data-lms-glowup-sidebar-nav] .d2l-page-main.d2l-max-width.d2l-min-width {
   padding: 0 !important;
   min-width: 0 !important;
