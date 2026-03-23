@@ -206,7 +206,16 @@ function buildSidebar(navLinks: NavLink[], userEls: HTMLElement[]): HTMLElement 
 
     for (const el of userEls) {
       const label = el.textContent?.trim() || ""
-      el.classList.add("glowup-sidebar-item")
+      const a = document.createElement("a")
+      a.className = "glowup-sidebar-item"
+      if (el instanceof HTMLAnchorElement) {
+        a.href = el.href
+        if (el.target) a.target = el.target
+        if (el.rel) a.rel = el.rel
+        if (el.download) a.download = el.download
+      } else {
+        a.href = "#"
+      }
 
       const iconSpan = document.createElement("span")
       iconSpan.className = "glowup-sidebar-icon"
@@ -216,12 +225,9 @@ function buildSidebar(navLinks: NavLink[], userEls: HTMLElement[]): HTMLElement 
       labelSpan.className = "glowup-sidebar-label"
       labelSpan.textContent = label
 
-      el.textContent = ""
-      el.appendChild(iconSpan)
-      el.appendChild(labelSpan)
-    }
-    for (const el of userEls) {
-      footer.appendChild(el)
+      a.appendChild(iconSpan)
+      a.appendChild(labelSpan)
+      footer.appendChild(a)
     }
   }
 
