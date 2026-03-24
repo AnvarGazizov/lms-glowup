@@ -1,5 +1,6 @@
 "use client"
 
+import Link from "next/link"
 import { useExtensionAuth } from "@/hooks/use-extension-auth"
 
 export default function ExtensionCallbackPage() {
@@ -33,12 +34,12 @@ export default function ExtensionCallbackPage() {
             </p>
             <p className="text-sm text-zinc-500 dark:text-zinc-400">
               Please{" "}
-              <a
-                href="/login?redirect=extension"
+              <Link
+                href="/"
                 className="font-medium text-zinc-900 hover:underline dark:text-zinc-50"
               >
                 sign in
-              </a>{" "}
+              </Link>{" "}
               first.
             </p>
           </div>

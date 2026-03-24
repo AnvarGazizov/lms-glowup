@@ -15,19 +15,19 @@ export async function GET(request: NextRequest) {
     const { error } = await supabase.auth.exchangeCodeForSession(code)
     if (error) {
       return NextResponse.redirect(
-        new URL("/login?error=invalid_link", request.url)
+        new URL("/?error=invalid_link", request.url)
       )
     }
   } else if (token_hash && type) {
     const { error } = await supabase.auth.verifyOtp({ token_hash, type })
     if (error) {
       return NextResponse.redirect(
-        new URL("/login?error=invalid_link", request.url)
+        new URL("/?error=invalid_link", request.url)
       )
     }
   } else {
     return NextResponse.redirect(
-      new URL("/login?error=invalid_link", request.url)
+      new URL("/?error=invalid_link", request.url)
     )
   }
 

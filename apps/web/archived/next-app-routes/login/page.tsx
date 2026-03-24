@@ -1,9 +1,17 @@
+/**
+ * Archived route — not built by Next.js (lives outside src/app).
+ * To restore: move this file to src/app/login/page.tsx
+ */
 "use client"
 
 import { useState } from "react"
 import { createClient } from "@/lib/supabase/client"
 
-export default function SignupPage() {
+export default function LoginPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ redirect?: string; error?: string }>
+}) {
   const [email, setEmail] = useState("")
   const [status, setStatus] = useState<"idle" | "loading" | "sent" | "error">("idle")
   const [errorMsg, setErrorMsg] = useState("")
@@ -12,9 +20,12 @@ export default function SignupPage() {
     e.preventDefault()
     setStatus("loading")
 
+    const params = await searchParams
     const supabase = createClient()
     const redirectTo = new URL("/auth/confirm", window.location.origin)
-    redirectTo.searchParams.set("redirect", "extension")
+    if (params.redirect) {
+      redirectTo.searchParams.set("redirect", params.redirect)
+    }
 
     const { error } = await supabase.auth.signInWithOtp({
       email,
@@ -34,10 +45,10 @@ export default function SignupPage() {
       <div className="w-full max-w-sm space-y-6 rounded-xl border border-zinc-200 bg-white p-8 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
         <div className="space-y-2 text-center">
           <h1 className="text-2xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">
-            Create an account
+            Sign in
           </h1>
           <p className="text-sm text-zinc-500 dark:text-zinc-400">
-            Enter your email to get started with a magic link
+            Enter your email to receive a magic link
           </p>
         </div>
 
@@ -80,12 +91,12 @@ export default function SignupPage() {
         )}
 
         <p className="text-center text-sm text-zinc-500 dark:text-zinc-400">
-          Already have an account?{" "}
+          Don&apos;t have an account?{" "}
           <a
-            href="/login"
+            href="/signup"
             className="font-medium text-zinc-900 hover:underline dark:text-zinc-50"
           >
-            Sign in
+            Sign up
           </a>
         </p>
       </div>
