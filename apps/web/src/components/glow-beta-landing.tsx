@@ -199,7 +199,7 @@ export function GlowBetaLanding({
     (ideaState?.ok === false ? ideaState.message : null)
 
   return (
-    <div className="overflow-x-hidden bg-[#110C17] text-[#F0ECF7]">
+    <div className="w-full min-w-0 overflow-x-clip bg-[#110C17] text-[#F0ECF7]">
       {showInvalidLinkError ? (
         <div
           role="alert"
@@ -383,11 +383,11 @@ export function GlowBetaLanding({
           }}
         />
         <Reveal>
-          <div className="relative z-[2] mx-auto max-w-[700px]">
+          <div className="relative z-[2] mx-auto min-w-0 max-w-[min(700px,100%)]">
             <div className="mb-4 flex items-center justify-center gap-[0.7rem] text-[0.72rem] font-bold tracking-[0.14em] text-[#FF7FCA] uppercase">
               Limited Beta Access
             </div>
-            <div className="rounded-[24px] border border-[rgba(249,76,175,0.18)] bg-[rgba(249,76,175,0.04)] p-8 md:p-12 md:px-14">
+            <div className="min-w-0 max-w-full rounded-[24px] border border-[rgba(249,76,175,0.18)] bg-[rgba(249,76,175,0.04)] p-8 md:p-12 md:px-14">
               <h2 className="mb-2 text-center text-[clamp(2rem,3.5vw,3rem)] leading-[1.1] font-extrabold tracking-[-0.02em] text-[#F0ECF7]">
                 Be the <span className="text-[#F94CAF]">First</span> to Glow Up
               </h2>
@@ -499,12 +499,12 @@ export function GlowBetaLanding({
                   </p>
                 </form>
               ) : (
-                <div className="animate-[glow-fade-up_0.5s_ease_both] px-2 py-8 text-center">
+                <div className="animate-[glow-fade-up_0.5s_ease_both] mx-auto min-w-0 max-w-full px-2 py-8 text-center">
                   <span className="mb-4 block text-5xl">🎉</span>
-                  <h3 className="mb-2 text-[1.4rem] font-extrabold text-[#FF7FCA]">
+                  <h3 className="mb-2 break-words text-[1.4rem] font-extrabold text-[#FF7FCA]">
                     You&apos;re on the list!
                   </h3>
-                  <p className="text-[0.95rem] leading-[1.7] text-[#DAD1E6]">
+                  <p className="break-words text-[0.95rem] leading-[1.7] text-[#DAD1E6]">
                     Thanks for signing up. We&apos;ll be in touch as soon as your
                     beta access is ready. Keep an eye on your inbox!
                   </p>
@@ -540,7 +540,7 @@ export function GlowBetaLanding({
 
           <Reveal>
             <div
-              className="mx-auto mt-10 max-w-[680px] rounded-[20px] border border-[rgba(0,102,255,0.18)] bg-[rgba(0,102,255,0.04)] px-8 py-8 text-center md:mt-10 md:px-10"
+              className="mx-auto mt-10 min-w-0 max-w-[min(680px,100%)] rounded-[20px] border border-[rgba(0,102,255,0.18)] bg-[rgba(0,102,255,0.04)] px-8 py-8 text-center md:mt-10 md:px-10"
             >
               <h3 className="mb-1 text-[1.15rem] font-extrabold text-white">
                 💡 Submit an Idea
@@ -589,7 +589,7 @@ export function GlowBetaLanding({
                   </div>
                 </form>
               ) : (
-                <p className="animate-[glow-fade-up_0.4s_ease_both] text-[0.92rem] font-semibold text-[#4D94FF]">
+                <p className="animate-[glow-fade-up_0.4s_ease_both] mx-auto min-w-0 max-w-full break-words text-[0.92rem] font-semibold text-[#4D94FF]">
                   🙌 Thanks! We&apos;ve got your idea and we love it already.
                 </p>
               )}
