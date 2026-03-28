@@ -2,6 +2,11 @@
 
 import { createClient } from "@/lib/supabase/server"
 
+/** Pragmatic RFC-style check; blocks obvious junk without being pedantic. */
+function isValidEmail(email: string): boolean {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+}
+
 export type GlowLandingActionState =
   | { ok: true }
   | { ok: false; message: string }
@@ -22,13 +27,23 @@ export async function submitBetaSignUp(
     return { ok: false, message: "Please fill in all required fields." }
   }
 
+  if (!isValidEmail(email)) {
+    return {
+      ok: false,
+      message: "Please enter a valid email address.",
+    }
+  }
+
   const supabase = await createClient()
-  const { error } = await supabase.from("beta_sign_ups").insert({
-    first_name,
-    last_name,
-    email,
-    institution,
-  })
+  const { error } = await supabase.from("beta_sign_ups").upsert(
+    {
+      first_name,
+      last_name,
+      email,
+      institution,
+    },
+    { onConflict: "email" },
+  )
 
   if (error) {
     return {
@@ -52,6 +67,13 @@ export async function submitFeatureIdea(
       ok: false,
       message:
         "Please enter your email in the beta sign-up form above, then try again.",
+    }
+  }
+
+  if (!isValidEmail(email)) {
+    return {
+      ok: false,
+      message: "Please enter a valid email in the beta sign-up form above.",
     }
   }
 

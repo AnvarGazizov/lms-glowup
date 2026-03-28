@@ -411,9 +411,12 @@ export function GlowBetaLanding({
                         id="email"
                         name="email"
                         type="email"
+                        inputMode="email"
                         placeholder="jane.smith@university.edu"
                         autoComplete="email"
                         required
+                        pattern="[^\s@]+@[^\s@]+\.[^\s@]+"
+                        title="Enter a valid email address (example: name@school.edu)"
                         value={signupEmail}
                         onChange={(e) => setSignupEmail(e.target.value)}
                         className="rounded-[10px] border border-[rgba(249,76,175,0.18)] bg-[rgba(255,255,255,0.05)] px-[1.1rem] py-[0.85rem] text-[0.95rem] text-[#F0ECF7] outline-none transition-all placeholder:text-[rgba(218,209,230,0.3)] focus:border-[#F94CAF] focus:bg-[rgba(249,76,175,0.06)] focus:shadow-[0_0_0_3px_rgba(249,76,175,0.12)]"
