@@ -1,5 +1,6 @@
 "use client"
 
+import confetti from "canvas-confetti"
 import Image from "next/image"
 import {
   type FormEvent,
@@ -15,6 +16,28 @@ import {
   submitBetaSignUp,
   submitFeatureIdea,
 } from "@/lib/actions/glow-landing"
+
+const SUBMIT_CONFETTI_COLORS = [
+  "#F94CAF",
+  "#FF7FCA",
+  "#C4A8E8",
+  "#E8DFF5",
+  "#F0ECF7",
+]
+
+function playSubmitConfetti() {
+  confetti({
+    particleCount: 130,
+    spread: 72,
+    startVelocity: 32,
+    gravity: 1.05,
+    drift: 0,
+    ticks: 240,
+    origin: { y: 0.68 },
+    colors: SUBMIT_CONFETTI_COLORS,
+    disableForReducedMotion: true,
+  })
+}
 
 function Reveal({
   children,
@@ -136,6 +159,23 @@ export function GlowBetaLanding({
 
   const [signupEmail, setSignupEmail] = useState("")
   const [ideaEmailHint, setIdeaEmailHint] = useState<string | null>(null)
+
+  const prevBetaState = useRef<GlowLandingActionState>(null)
+  const prevIdeaState = useRef<GlowLandingActionState>(null)
+
+  useEffect(() => {
+    if (betaState?.ok === true && prevBetaState.current?.ok !== true) {
+      playSubmitConfetti()
+    }
+    prevBetaState.current = betaState
+  }, [betaState])
+
+  useEffect(() => {
+    if (ideaState?.ok === true && prevIdeaState.current?.ok !== true) {
+      playSubmitConfetti()
+    }
+    prevIdeaState.current = ideaState
+  }, [ideaState])
 
   useEffect(() => {
     if (signedInEmail) setSignupEmail(signedInEmail)
