@@ -1,7 +1,7 @@
 "use server"
 
-import { createClient } from "@/lib/supabase/server"
 import { logSupabaseError } from "@/lib/supabase/log-error"
+import { createServiceRoleClient } from "@/lib/supabase/service-role"
 
 /** Pragmatic RFC-style check; blocks obvious junk without being pedantic. */
 function isValidEmail(email: string): boolean {
@@ -35,7 +35,21 @@ export async function submitBetaSignUp(
     }
   }
 
-  const supabase = await createClient()
+  const supabase = createServiceRoleClient()
+  if (!supabase) {
+    console.error(
+      JSON.stringify({
+        tag: "glow_landing_config",
+        message:
+          "SUPABASE_SERVICE_ROLE_KEY is missing; waitlist writes cannot run on the server.",
+      }),
+    )
+    return {
+      ok: false,
+      message: "Something went wrong. Please try again in a moment.",
+    }
+  }
+
   const { error } = await supabase.from("beta_sign_ups").upsert(
     {
       first_name,
@@ -79,14 +93,31 @@ export async function submitFeatureIdea(
     }
   }
 
-  const supabase = await createClient()
-  const { error } = await supabase.from("feature_ideas").insert({
-    email,
-    idea,
-  })
+  const supabase = createServiceRoleClient()
+  if (!supabase) {
+    console.error(
+      JSON.stringify({
+        tag: "glow_landing_config",
+        message:
+          "SUPABASE_SERVICE_ROLE_KEY is missing; feature idea writes cannot run on the server.",
+      }),
+    )
+    return {
+      ok: false,
+      message: "Something went wrong. Please try again in a moment.",
+    }
+  }
+
+  const { error } = await supabase.from("feature_ideas").upsert(
+    {
+      email,
+      idea,
+    },
+    { onConflict: "email" },
+  )
 
   if (error) {
-    logSupabaseError("glow-landing.submitFeatureIdea.feature_ideas.insert", error)
+    logSupabaseError("glow-landing.submitFeatureIdea.feature_ideas.upsert", error)
     return {
       ok: false,
       message: "Something went wrong. Please try again in a moment.",
