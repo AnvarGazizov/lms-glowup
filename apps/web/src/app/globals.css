@@ -24,3 +24,31 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Glow beta landing — matches glow-beta/css keyframe names for Tailwind arbitrary animation */
+@keyframes glow-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes glow-pulse-dot {
+  0%,
+  100% {
+    box-shadow: 0 0 6px #f94caf;
+  }
+  50% {
+    box-shadow:
+      0 0 18px #f94caf,
+      0 0 36px rgba(249, 76, 175, 0.3);
+  }
+}
