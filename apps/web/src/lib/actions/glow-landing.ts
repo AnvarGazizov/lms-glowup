@@ -1,6 +1,7 @@
 "use server"
 
 import { createClient } from "@/lib/supabase/server"
+import { logSupabaseError } from "@/lib/supabase/log-error"
 
 /** Pragmatic RFC-style check; blocks obvious junk without being pedantic. */
 function isValidEmail(email: string): boolean {
@@ -46,6 +47,7 @@ export async function submitBetaSignUp(
   )
 
   if (error) {
+    logSupabaseError("glow-landing.submitBetaSignUp.beta_sign_ups.upsert", error)
     return {
       ok: false,
       message: "Something went wrong. Please try again in a moment.",
@@ -84,6 +86,7 @@ export async function submitFeatureIdea(
   })
 
   if (error) {
+    logSupabaseError("glow-landing.submitFeatureIdea.feature_ideas.insert", error)
     return {
       ok: false,
       message: "Something went wrong. Please try again in a moment.",
