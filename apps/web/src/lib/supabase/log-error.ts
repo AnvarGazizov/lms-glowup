@@ -1,6 +1,6 @@
 /**
  * Emit structured errors to stderr for Vercel Function / runtime logs.
- * Do not pass PII (emails, tokens) in `context` or extra fields.
+ * `requestPayload` is for reproducing failed writes (may include PII); keep logs access-restricted.
  */
 export function logSupabaseError(
   context: string,
@@ -11,7 +11,7 @@ export function logSupabaseError(
     details?: string
     hint?: string
   },
-  extra?: Record<string, string | number | boolean | undefined>,
+  requestPayload?: Record<string, unknown>,
 ): void {
   console.error(
     JSON.stringify({
@@ -22,7 +22,7 @@ export function logSupabaseError(
       status: error.status,
       details: error.details,
       hint: error.hint,
-      ...extra,
+      ...(requestPayload !== undefined ? { requestPayload } : {}),
     }),
   )
 }

@@ -61,7 +61,12 @@ export async function submitBetaSignUp(
   )
 
   if (error) {
-    logSupabaseError("glow-landing.submitBetaSignUp.beta_sign_ups.upsert", error)
+    logSupabaseError("glow-landing.submitBetaSignUp.beta_sign_ups.upsert", error, {
+      first_name,
+      last_name,
+      email,
+      institution,
+    })
     return {
       ok: false,
       message: "Something went wrong. Please try again in a moment.",
@@ -108,16 +113,16 @@ export async function submitFeatureIdea(
     }
   }
 
-  const { error } = await supabase.from("feature_ideas").upsert(
-    {
-      email,
-      idea,
-    },
-    { onConflict: "email" },
-  )
+  const { error } = await supabase.from("feature_ideas").insert({
+    email,
+    idea,
+  })
 
   if (error) {
-    logSupabaseError("glow-landing.submitFeatureIdea.feature_ideas.upsert", error)
+    logSupabaseError("glow-landing.submitFeatureIdea.feature_ideas.insert", error, {
+      email,
+      idea,
+    })
     return {
       ok: false,
       message: "Something went wrong. Please try again in a moment.",
