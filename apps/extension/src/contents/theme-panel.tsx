@@ -1,13 +1,10 @@
 import { useEffect, useState } from "react"
-import type { User } from "@supabase/supabase-js"
 import type { PlasmoCSConfig, PlasmoGetStyle } from "plasmo"
 
 import styleText from "data-text:./theme-panel.css"
 import iconUrl from "data-url:../../assets/icon.png"
 import { getPrefs, setPrefs, onPrefsChanged } from "~lib/storage"
 import type { ThemePreferences } from "~lib/storage"
-import { supabase } from "~lib/supabase"
-import { WEB_APP_LOGIN_REDIRECT_URL } from "~lib/web-app-url"
 import { THEMES } from "~themes"
 
 export const config: PlasmoCSConfig = {
@@ -43,8 +40,6 @@ function ThemePanel() {
   const [open, setOpen] = useState(false)
   const [prefs, setLocalPrefs] = useState<ThemePreferences | null>(null)
   const [customDraft, setCustomDraft] = useState("")
-  const [user, setUser] = useState<User | null>(null)
-  const [authLoading, setAuthLoading] = useState(true)
 
   useEffect(() => {
     getPrefs().then((p) => {
@@ -58,29 +53,6 @@ function ThemePanel() {
     })
 
     return unsubscribe
-  }, [])
-
-  useEffect(() => {
-    supabase.auth.getUser().then(({ data }) => {
-      setUser(data.user)
-      setAuthLoading(false)
-    })
-
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      (_event, session) => {
-        setUser(session?.user ?? null)
-        setAuthLoading(false)
-      }
-    )
-
-    const onStorageChange = () => {
-      supabase.auth.getUser().then(({ data }) => setUser(data.user))
-    }
-    chrome.storage.onChanged.addListener(onStorageChange)
-    return () => {
-      subscription.unsubscribe()
-      chrome.storage.onChanged.removeListener(onStorageChange)
-    }
   }, [])
 
   if (!prefs) return null
@@ -100,14 +72,6 @@ function ThemePanel() {
 
   const saveCustomCSS = () => {
     setPrefs({ customCSS: customDraft })
-  }
-
-  const openSignIn = () => {
-    window.open(
-      WEB_APP_LOGIN_REDIRECT_URL,
-      "_blank",
-      "noopener,noreferrer"
-    )
   }
 
   return (
@@ -162,38 +126,16 @@ function ThemePanel() {
 
           <div className="glowup-section">
             <div className="glowup-section-title">Layout</div>
-            {authLoading ? (
-              <p className="glowup-sidebar-gate-text">Checking sign-in…</p>
-            ) : user ? (
-              <div className="glowup-toggle-row">
-                <span className="glowup-toggle-label">Sidebar Nav</span>
-                <Toggle
-                  checked={prefs.enabledFeatures.sidebarNav}
-                  onChange={(v) => {
-                    toggleFeature("sidebarNav", v)
-                    setTimeout(() => window.location.reload(), 300)
-                  }}
-                />
-              </div>
-            ) : (
-              <div className="glowup-sidebar-gate">
-                <p className="glowup-sidebar-gate-lead">
-                  Unlock sidebar navigation
-                </p>
-                <p className="glowup-sidebar-gate-text">
-                  Sign in with your LMS GlowUp account to turn on the Brightspace
-                  sidebar layout. Everything else in this panel works without
-                  signing in.
-                </p>
-                <button
-                  type="button"
-                  className="glowup-signin-btn"
-                  onClick={openSignIn}
-                >
-                  Sign in to continue
-                </button>
-              </div>
-            )}
+            <div className="glowup-toggle-row">
+              <span className="glowup-toggle-label">Sidebar Nav</span>
+              <Toggle
+                checked={prefs.enabledFeatures.sidebarNav}
+                onChange={(v) => {
+                  toggleFeature("sidebarNav", v)
+                  setTimeout(() => window.location.reload(), 300)
+                }}
+              />
+            </div>
           </div>
         </div>
       )}

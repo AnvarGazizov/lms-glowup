@@ -43,19 +43,11 @@ function getFeatureAttrs(prefs: ThemePreferences) {
   }
 }
 
-export function applyTheme(
-  prefs: ThemePreferences,
-  isLoggedIn: boolean
-): void {
+export function applyTheme(prefs: ThemePreferences): void {
   const css = buildCSS(prefs)
   injectCSS(css)
   applyFeatureAttrs(prefs)
-  const themed = prefs.activeTheme !== "none"
-  setEnrollmentCardTextFixActive(themed)
-  setCalendarShadowFixActive(themed)
-  setAnnouncementsListShadowFixActive(themed)
-  setPortfolioShadowFixActive(themed)
-  applySidebarNav(isLoggedIn && prefs.enabledFeatures.sidebarNav)
+  applySidebarNav(prefs.enabledFeatures.sidebarNav)
 }
 
 export function injectCSS(css: string): void {

@@ -12,7 +12,7 @@ export const DEFAULT_PREFS: ThemePreferences = {
   activeTheme: "none",
   customCSS: "",
   enabledFeatures: {
-    sidebarNav: false
+    sidebarNav: true
   }
 }
 
